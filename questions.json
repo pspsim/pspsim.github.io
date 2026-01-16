@@ -1,3 +1,4 @@
+[
  { 
     "id": 1, 
     "topic": "I", 
@@ -520,4 +521,4 @@
 { "id": 79, "topic": "VII", "question": "A presidência da Comissão Europeia atualmente é ocupada por…", "options": ["Josep Borrell", "Emily O’Reilly", "Ursula von der Leyen", "Charles Michel"], "correct": "Ursula von der Leyen" },
 
 { "id": 80, "topic": "VII", "question": "O Conselho da União Europeia e o Parlamento Europeu…", "options": ["negoceiam, aprovam e adotam conjuntamente a legislação europeia", "negoceiam, aprovam e adotam separadamente, a política europeia", "adotam, aprovam ou rejeitam pareceres conjuntamente", "legislam, aprovam e adotam separadamente a política europeia de segurança comum"], "correct": "negoceiam, aprovam e adotam conjuntamente a legislação europeia" }
-];
+]
