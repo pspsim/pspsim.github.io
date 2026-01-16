@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>PSP SIM</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; background: #f0f0f0; }
+  header { background-color: #003366; color: white; position: relative; height: 140px; display: flex; flex-direction: column; justify-content: center; align-items: center; font-weight: bold; overflow: hidden; }
+  header .title { font-size: 2.8rem; letter-spacing: 1px; text-transform: uppercase; z-index: 2; }
+  header .subtitle { font-size: 1.05rem; font-style: italic; margin-top: 8px; text-align: center; max-width: 90%; z-index: 2; }
+  header .stripes { position: absolute; bottom: -60px; right: -20px; width: 240px; height: 300px; transform-origin: bottom right; transform: rotate(17deg); pointer-events: none; background: linear-gradient(to right, #003366 0%, #003366 30%, white 30%, white 38%, #003366 38%, #003366 48%, white 48%, white 55%, #003366 55%, #003366 65%, white 65%, white 72%, #003366 72%, #003366 100%); }
+  h2 { margin-top: 30px; color: #003366; border-bottom: 2px solid #003366; padding-bottom: 5px; }
+  .question { margin-bottom: 20px; padding: 10px; background: white; border-radius: 5px; }
+  .options label { display: block; margin-bottom: 5px; }
+  #timer { font-size: 20px; font-weight: bold; text-align: center; margin: 20px 0; }
+  #submit { display: block; margin: 20px auto; padding: 10px 20px; font-size: 16px; }
+  #result { margin-top: 20px; font-size: 18px; font-weight: bold; text-align: center; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title">PSP SIM</div>
+  <div class="subtitle">Simulação da Prova Escrita de Conhecimentos para a Polícia de Segurança Pública </div>
+  <div class="stripes"></div>
+</header>
+
+<div id="timer" style="font-size: 50px; color: #003366;"> 02:00:00</div> 
+
+<p style="text-align:center;">
+  Bem-vindo ao simulador para a <b>Prova Escrita de Conhecimentos da PSP!</b><br>
+  <br>
+  Este simulador foi criado para uso pessoal, e tem como função simular uma Prova de Conhecimentos o mais fielmente possível. <br>
+  O simulador usa dados das Provas Escritas de Conhecimentos disponíveis <a href="http://www.epp.pt/Pages/admissaoprovas.htm" target="_blank" style="color:#003366; text-decoration:underline;">no site da Escola Prática da Polícia</a>. <br>
+  Há um temporizador de 120 minutos em contagem decrescente neste simulador. É necessário responder a 80 perguntas, divididas entre os tópicos: <br>
+  <br>
+  I - Português até ao 12ºano <br>
+II - Temas de Cultura Geral <br>
+III - Constituição da República Portuguesa (CRP) <br>
+IV - Declaração Universal Dos Direitos Humanos (DUDH) <br>
+V - Lei Orgânica da Polícia de Segurança Publica <br>
+VI - Estatuto Profissional do Pessoal com Funções Policiais da PSP <br>
+VII - Instituições da União Europeia <br>
+  <br>
+As perguntas serão aleatórias. Porém, o formato será o mais fiel a uma Prova de Conhecimentos legítima, utilizando a média de perguntas por tópico. <br>
+  Cada pergunta corresponde 0.25 valores. A nota é avaliada de 0 a 20 valores. Notas inferiores a 12 valores darão o resultado "Não Apto" (ver aviso bla bla bla) <br>
+  <br>
+O PSP SIM foi criado por uma candidata ao Concurso de Formação de Agentes. O PSP SIM não pertence á Polícia de Segurança Pública. O PSP SIM não representa a Polícia de Segurança Pública. O PSP SIM não é monetizado. <br>
+  É só material de estudo. <br>
+    <br>
+Caso encontrem alguma pergunta em que a resposta esteja errada, ou a mesma tenha mudado devido a atualidades, por favor deixem mensagem na minha inbox! <br>
+  <br>
+    <b>Boa Sorte! :)</b> <br>
+  <br>
+  O PSP SIM ainda se encontra sobre construção.<br>
+    
+</p>
+
+<form id="quizForm"></form>
+<button id="submit">Submeter Teste</button>
+<div id="result"></div>
+
+<script>
+let testSubmitted = false;
+let testQuestions = [];
+
+// ===================== ARRAY DE PERGUNTAS =====================
+const questionsData = [
+  { 
+    "id": 1, 
+    "topic": "I", 
+    "question": "Uma Polícia <b><u>integral</u></b>, <b><u>humana</u></b>, <b><u>forte</u></b>, <b><u>coesa</u></b> e ao serviço do cidadão. As palavras sublinhadas são…", 
+    "options": ["sinónimas", "antónimas", "adjetivos", "advérbios"], 
+    "correct": "adjetivos" 
+  },
+
+  { 
+    "id": 2, 
+    "topic": "I", 
+    "question": "A PSP depende do membro do Governo responsável pela Administração Interna. Qual é o sujeito da frase?", 
+    "options": [
+      "A PSP...",
+      "...pela Administração Interna",
+      "…do membro do Governo…",
+      "…do membro do Governo responsável pela Administração Interna"
+    ], 
+    "correct": "A PSP..."
+  },
+
+  { 
+    "id": 3, 
+    "topic": "I", 
+    "question": "Qual das seguintes frases não tem erros quanto aos acentos gráficos?", 
+    "options": [
+      "O policia pára há porta da esquadra", 
+      "Na esquadra à diversas valências políciaís", 
+      "Há na Polícia oportunidades de carreira", 
+      "Todas as hipóteses acima estão erradas"
+    ], 
+    "correct": "Há na Polícia oportunidades de carreira" 
+  },
+
+  { 
+    "id": 4, 
+    "topic": "II", 
+    "question": "Qual das seguintes instituições não é uma força de segurança ou Polícia?", 
+    "options": [
+      "Polícia de Segurança Pública", 
+      "Guarda Nacional Republicana", 
+      "Polícia Judiciária", 
+      "Serviço de Informações Estratégicas de Defesa"
+    ], 
+    "correct": "Serviço de Informações Estratégicas de Defesa" 
+  },
+
+  { 
+    "id": 5, 
+    "topic": "II", 
+    "question": "Qual dos seguintes crimes é o mais participado em Portugal, segundo o Relatório Anual de Segurança Interna de 2024?", 
+    "options": [
+      "Estacionamento abusivo", 
+      "Violência doméstica", 
+      "Homicídio", 
+      "Condução de veículos automóveis com velocidade excessiva"
+    ], 
+    "correct": "Violência doméstica" 
+  },
+
+  { 
+    "id": 6, 
+    "topic": "III", 
+    "question": "O processo criminal assegura…", 
+    "options": [
+      "algumas garantias de defesa, dependendo da capacidade económica dos interessados", 
+      "todas as garantias de defesa, incluindo o recurso ao Provedor de Justiça", 
+      "todas as garantias de defesa, incluindo o recurso", 
+      "todas as garantias, exceto o recurso"
+    ], 
+    "correct": "todas as garantias de defesa, incluindo o recurso" 
+  },
+
+  { 
+    "id": 7, 
+    "topic": "IV", 
+    "question": "A DUDH, concretamente no seu artigo 5.º, proíbe…", 
+    "options": [
+      "a prisão com culpa formada e tratamentos cruéis, a todos os portugueses de origem ou por adoção", 
+      "a tortura, penas ou tratamentos cruéis, desumanos ou degradantes", 
+      "penas ou medidas de coação injustas, díspares ou degradantes", 
+      "a prisão sem culpa formada e tratamentos cruéis a todos os portugueses, independentemente da idade"
+    ], 
+    "correct": "a tortura, penas ou tratamentos cruéis, desumanos ou degradantes" 
+  },
+
+  { 
+    "id": 8, 
+    "topic": "V", 
+    "question": "De acordo com a Lei Orgânica, a PSP…", 
+    "options": [
+      "é uma força de segurança de natureza militar, constituída por militares organizados num corpo especial de tropas e dotada de autonomia administrativa", 
+      "está organizada hierarquicamente em todos os níveis da sua estrutura, estando o pessoal com funções policiais sujeito à hierarquia de comando e o pessoal sem funções policiais sujeito às regras gerais de hierarquia da função pública", 
+      "é um corpo superior de polícia criminal, está organizada hierarquicamente na dependência do Ministério da Justiça, é um serviço central da administração direta do Estado e um órgão de polícia criminal de competência genérica", 
+      "está organizada hierarquicamente em todos os níveis da sua estrutura, militarizada, sendo um serviço central do Estado sem autonomia administrativa"
+    ], 
+    "correct": "está organizada hierarquicamente em todos os níveis da sua estrutura, estando o pessoal com funções policiais sujeito à hierarquia de comando e o pessoal sem funções policiais sujeito às regras gerais de hierarquia da função pública" 
+  },
+
+  { 
+    "id": 9, 
+    "topic": "VI", 
+    "question": "Nos termos do artigo 24.º do seu Estatuto, os polícias têm direito à dotação inicial do fardamento no momento do ingresso na PSP. Para efeitos...", 
+    "options": [
+      "a PSP participa nas despesas com a aquisição de fardamento efetuadas pelos polícias na efetividade de serviço, através da atribuição de uma comparticipação anual no valor de € 600, com a natureza de prestação social, que é assegurada decorridos dois anos sobre a data de ingresso na PSP", 
+      "a PSP não participa nas despesas com a aquisição de fardamento efetuadas pelos polícias na efetividade de serviço", 
+      "a PSP participa nas despesas com a aquisição de fardamento efetuadas pelos polícias na efetividade de serviço, através da atribuição de uma comparticipação anual no valor de € 600, com a natureza de prestação social, que é assegurada decorridos quatro anos sobre a data de ingresso na PSP", 
+      "a PSP participa nas despesas com a aquisição de fardamento efetuadas pelos polícias na efetividade de serviço, através da atribuição de uma comparticipação anual no valor de € 600, com a natureza de prestação social, que é assegurada decorridos quatro anos sobre a data de ingresso na PSP"
+    ], 
+    "correct": "a PSP participa nas despesas com a aquisição de fardamento efetuadas pelos polícias na efetividade de serviço, através da atribuição de uma comparticipação anual no valor de € 600, com a natureza de prestação social, que é assegurada decorridos dois anos sobre a data de ingresso na PSP" 
+  },
+
+  { 
+    "id": 10, 
+    "topic": "VII", 
+    "question": "Qual dos seguintes países pertence à União Europeia?", 
+    "options": ["Bélgica", "Ucrânia", "Argélia", "Escócia"], 
+    "correct": "Bélgica" 
+  },
+
+  { 
+    "id": 11, 
+    "topic": "I", 
+    "question": "Qual das palavras não tem erro ortográfico?", 
+    "options": ["Delincuente", "Oblícuo", "Inícuo", "Eloquente"], 
+    "correct": "Eloquente" 
+  },
+
+  { 
+    "id": 12, 
+    "topic": "I", 
+    "question": "Qual a frase sem erros?", 
+    "options": [
+      "Faznos falta mais mulheres na Polícia", 
+      "O grupo de polícias de remunerado impediram que vandalizassem o autocarro da equipa visitante", 
+      "Fize-mos um bom serviço, porém tive-mos de usar a força física", 
+      "Soubesse eu mais cedo e tinha concorrido"
+    ], 
+    "correct": "Soubesse eu mais cedo e tinha concorrido" 
+  },
+
+  { 
+    "id": 13, 
+    "topic": "I", 
+    "question": "Qual a frase sem erros?", 
+    "options": [
+      "O polícia háde encaminhar a vítima com dignidade", 
+      "O mais velho trás a espingarda shotgun", 
+      "O mais novo condus a viatura policial", 
+      "Todas as hipóteses acima estão erradas"
+    ], 
+    "correct": "Todas as hipóteses acima estão erradas" 
+  },
+
+  { 
+    "id": 14, 
+    "topic": "I", 
+    "question": "Qual a frase sem erros?", 
+    "options": [
+      "Não vos reconhecia", 
+      "Eu sabia que te não faria o serviço", 
+      "Ele é o indivíduo do qual encaminhei para a casa abrigo", 
+      "Se fosse eu, não abordava-os"
+    ], 
+    "correct": "Não vos reconhecia" 
+  },
+
+  { 
+    "id": 15, 
+    "topic": "I", 
+    "question": "Qual a frase cujo verbo está no pretérito perfeito?", 
+    "options": [
+      "Eu investigava se houvesse denúncia", 
+      "O chefe determinou o patrulhamento de visibilidade", 
+      "A comandante de esquadra tratava muito bem os agentes", 
+      "Os novos carros-patrulha possuem um computador integrado"
+    ], 
+    "correct": "O chefe determinou o patrulhamento de visibilidade" 
+  },
+
+  { 
+    "id": 16, 
+    "topic": "I", 
+    "question": "Qual a frase cujo verbo está no pretérito imperfeito?", 
+    "options": [
+      "O polícia abordava sempre os suspeitos com urbanidade", 
+      "O suspeito tentou abrir as algemas com um clip", 
+      "O infrator poderia apresentar reclamação", 
+      "Todas estão incorretas"
+    ], 
+    "correct": "O polícia abordava sempre os suspeitos com urbanidade" 
+  },
+
+  { 
+    "id": 17, 
+    "topic": "I", 
+    "question": "Qual das seguintes é uma palavra derivada por sufixação?", 
+    "options": ["Descontente", "Primeiramente", "Demente", "Repente"], 
+    "correct": "Primeiramente" 
+  },
+
+  { 
+    "id": 18, 
+    "topic": "I", 
+    "question": "Qual das seguintes é uma palavra composta?", 
+    "options": ["Carro-patrulha", "Megafone", "Superesquadra", "Antibala"], 
+    "correct": "Carro-patrulha" 
+  },
+
+  { 
+    "id": 19, 
+    "topic": "I", 
+    "question": "Qual das seguintes tem ortografia correta?", 
+    "options": [
+      "Os polícias obteram a melhor pontuação no campeonato de estrada", 
+      "A delegência de busca foi um sucesso", 
+      "Aumentou no ultimo recrutamento o numero de policias femeninos", 
+      "Os polícias que fizeram segurança pessoal a Sua Santidade são uns privilegiados"
+    ], 
+    "correct": "Os polícias que fizeram segurança pessoal a Sua Santidade são uns privilegiados" 
+  },
+
+  { 
+    "id": 20, 
+    "topic": "I", 
+    "question": "Qual o significado de \"lacuna\"?", 
+    "options": ["Semelhante a lago", "Falta, omissão", "Acrescento, apêndice", "Francesismo, que significa lagoa"], 
+    "correct": "Falta, omissão" 
+  },
+  { 
+  "id": 21, 
+  "topic": "I", 
+  "question": "Qual dos seguintes tem ortografia correta?", 
+  "options": [
+    "Se eu não algema-se ia pôr em risco a nossa segurança", 
+    "Autua-se o infrator e notifica-se para comparência na autoridade competente", 
+    "Fizes-te bem em apreender o objeto ilícito", 
+    "Todas as respostas têm erros"
+  ], 
+  "correct": "Autua-se o infrator e notifica-se para comparência na autoridade competente" 
+},
+
+{ 
+  "id": 22, 
+  "topic": "I", 
+  "question": "“A PSP está organizada <b><u>hierarquicamente</u></b> em todos os níveis da sua estrutura”. Caraterize a palavra sublinhada quanto à classe gramatical.", 
+  "options": ["Advérbio", "Verbo", "Adjetivo", "Palavra derivada por prefixação"], 
+  "correct": "Advérbio" 
+},
+
+{ 
+  "id": 23, 
+  "topic": "I", 
+  "question": "Qual destas frases tem pontuação incorreta?", 
+  "options": [
+    "De quem é este porta-algemas?", 
+    "Conta como fizeste a imobilização do suspeito?", 
+    "Vou de férias em julho para um destino de praia.", 
+    "Que perseguição policial perigosa!"
+  ], 
+  "correct": "Conta como fizeste a imobilização do suspeito?" 
+},
+
+{ 
+  "id": 24, 
+  "topic": "II", 
+  "question": "Qual o ministério que tem a responsabilidade de formular, conduzir, executar e avaliar as políticas de segurança interna, de controlo de fronteiras, de proteção e socorro, de planeamento civil de emergência, de segurança rodoviária e de administração eleitoral?", 
+  "options": [
+    "Ministério da Defesa", 
+    "Ministério da Administração Interna", 
+    "Ministério dos Negócios Estrangeiros", 
+    "Ministério da Justiça"
+  ], 
+  "correct": "Ministério da Administração Interna" 
+},
+
+{ 
+  "id": 25, 
+  "topic": "II", 
+  "question": "Qual das seguintes não é uma das nossas forças armadas portuguesas?", 
+  "options": ["Marinha", "Exército", "Guarda Costeira", "Força Aérea"], 
+  "correct": "Guarda Costeira" 
+},
+
+{ 
+  "id": 26, 
+  "topic": "II", 
+  "question": "A quem compete exercer a ação penal, participar na execução da política criminal definida pelos órgãos de soberania, representar o Estado e defender a legalidade democrática e os interesses que a lei determinar?", 
+  "options": ["Ministério Público", "Ministério da Administração Interna", "Ministério da Ação Penal", "Ministério da Ação Climática"], 
+  "correct": "Ministério Público" 
+},
+
+{ 
+  "id": 27, 
+  "topic": "II", 
+  "question": "Quem foi o Presidente da República em Portugal entre 2016 e 2021?", 
+  "options": ["Aníbal Cavaco Silva", "António Gueterres", "Marcelo Rebelo de Sousa", "Jorge Sampaio"], 
+  "correct": "Marcelo Rebelo de Sousa" 
+},
+
+{ 
+  "id": 28, 
+  "topic": "II", 
+  "question": "Qual das seguintes afirmações está incorreta?", 
+  "options": ["Jair Bolsonaro foi presidente do Brasil", "José Eduardo dos Santos foi presidente de Angola", "Liz Truss foi presidente do Reino Unido", "Donald Trump é presidente dos Estados Unidos da América"], 
+  "correct": "Liz Truss foi presidente do Reino Unido" 
+},
+
+{ 
+  "id": 29, 
+  "topic": "II", 
+  "question": "Qual dos seguintes países não foi uma colónia portuguesa?", 
+  "options": ["África do Sul", "São Tomé e Príncipe", "Angola", "Moçambique"], 
+  "correct": "África do Sul" 
+},
+
+{ 
+  "id": 30, 
+  "topic": "II", 
+  "question": "Em que ano se deu a queda do muro de Berlim?", 
+  "options": ["1789", "1809", "1989", "2009"], 
+  "correct": "1989" 
+},
+
+{ 
+  "id": 31, 
+  "topic": "II", 
+  "question": "Qual das seguintes afirmações é falsa?", 
+  "options": [
+    "A cidade de Torres Novas posiciona-se a oeste da cidade de Portalegre", 
+    "A cidade do Porto posiciona-se a leste da cidade de Angra do Heroísmo", 
+    "A cidade de Vila Real de Santo António posiciona-se a norte da cidade de Chaves", 
+    "A cidade do Funchal posiciona-se a sul da cidade de Ponta Delgada"
+  ], 
+  "correct": "A cidade de Vila Real de Santo António posiciona-se a norte da cidade de Chaves"
+},
+{ 
+  "id": 32, 
+  "topic": "II", 
+  "question": "Qual dos seguintes mares banha o continente africano?", 
+  "options": [
+    "Mar Báltico", 
+    "Mar Negro", 
+    "Mar das Caraíbas", 
+    "Mar Mediterrâneo"
+  ], 
+  "correct": "Mar Mediterrâneo"
+},
+{ 
+  "id": 33, 
+  "topic": "II", 
+  "question": "Segundo o Centro Nacional de Cibersegurança, qual das seguintes não é uma boa prática no âmbito da utilização segura dos smartphones?", 
+  "options": [
+    "Ativar os mecanismos de bloqueio do seu smartphone através de um PIN ou de outra funcionalidade de autenticação", 
+    "Evitar ter o bluetooth e a localização do seu smartphone ligados desnecessariamente", 
+    "Utilizar uma VPN sempre que se ligar a uma Wi-Fi pública ou então optar por utilizar os dados para aceder à internet em lugares sem Wi-Fi doméstico ou profissional", 
+    "Evitar atualizar o sistema e as aplicações"
+  ], 
+  "correct": "Evitar atualizar o sistema e as aplicações"
+},
+{ 
+  "id": 34, 
+  "topic": "II", 
+  "question": "Qual dos seguintes autores portugueses tem obras publicadas no presente século?", 
+  "options": [
+    "António Lobo Antunes", 
+    "Eça de Queiroz", 
+    "Luís de Camões", 
+    "Miguel Torga"
+  ], 
+  "correct": "António Lobo Antunes"
+},
+{ 
+  "id": 35, 
+  "topic": "II", 
+  "question": "Qual das seguintes não é uma modalidade desportiva olímpica?", 
+  "options": [
+    "Skate", 
+    "Surf", 
+    "Parkour", 
+    "BMX Freestyle"
+  ], 
+  "correct": "Parkour"
+},
+{ 
+  "id": 36, 
+  "topic": "II", 
+  "question": "A Lei n.º 22/2023, de 25 de maio, conhecida pela 'Lei da Eutanásia', vem…", 
+  "options": [
+    "regular as condições em que a morte medicamente assistida não é punível, alterando o Código Civil", 
+    "regular as condições em que a morte medicamente assistida não é punível, alterando o Código Penal", 
+    "regular as condições em que a interrupção voluntária da gravidez não é punível, alterando o Código Penal", 
+    "regular as condições em que a interrupção voluntária da gravidez não é punível, alterando a Constituição da República Portuguesa"
+  ], 
+  "correct": "regular as condições em que a morte medicamente assistida não é punível, alterando o Código Penal"
+},
+{ 
+  "id": 37, 
+  "topic": "II", 
+  "question": "Segundo o Instituto Nacional de Estatística, Portugal atingiu no passado mês de abril uma taxa de inflação de 7,2%, sendo este o valor mais alto em 29 anos. Essencialmente, podemos entender esta inflação como…", 
+  "options": [
+    "um aumento geral dos preços dos bens e serviços", 
+    "uma diminuição geral dos preços dos bens e serviços", 
+    "o incremento do preço cobrado por um empréstimo e o dinheiro que se ganha com um depósito de poupança", 
+    "a diminuição do preço cobrado por um empréstimo e o dinheiro que se perde com um depósito de poupança"
+  ], 
+  "correct": "um aumento geral dos preços dos bens e serviços"
+},
+{ 
+  "id": 38, 
+  "topic": "II", 
+  "question": "Recep Tayyip Erdogan viu o seu mandato de presidente renovado por cinco anos, na segunda volta das eleições, com 52% dos votos, no mês de maio de 2023. Em que país ocorreram estas eleições?", 
+  "options": [
+    "Egito", 
+    "Irão", 
+    "Turquia", 
+    "Somália"
+  ], 
+  "correct": "Turquia"
+},
+{ 
+  "id": 39, 
+  "topic": "II", 
+  "question": "A Câmara Municipal de Lisboa inaugurou, no mês de maio de 2023, uma estátua em homenagem a Eduardo Lourenço, assinalando os 100 anos do seu nascimento. Em que área do conhecimento se notabilizou Eduardo Lourenço?", 
+  "options": [
+    "Arquitetura", 
+    "Medicina", 
+    "Filosofia", 
+    "Física"
+  ], 
+  "correct": "Filosofia"
+},
+{ 
+  "id": 40, 
+  "topic": "II", 
+  "question": "A Jornada Mundial da Juventude, que este ano ocorrerá em Portugal, é um evento de natureza religiosa, com uma identidade…", 
+  "options": [
+    "cristã italiana", 
+    "islâmica", 
+    "judaica", 
+    "Todas as opções estão incorretas"
+  ], 
+  "correct": "Todas as opções estão incorretas"
+},
+{ "id": 41, "topic": "III", "question": "Têm direito de sufrágio…", "options": ["todos os cidadãos maiores de 18 anos, independentemente das suas capacidades físicas ou mentais", "todos os cidadãos maiores de 21 anos, ressalvadas as capacidades individuais de cada um", "todos os cidadãos maiores de 18 anos, ressalvadas as incapacidades previstas na lei geral", "todos os cidadãos maiores de 16 anos, ressalvadas as incapacidades previstas na lei especial"], "correct": "todos os cidadãos maiores de 18 anos, ressalvadas as incapacidades previstas na lei geral" },
+
+{ "id": 42, "topic": "III", "question": "São órgãos de soberania…", "options": ["o Presidente da República, as assembleias de freguesia, o Governo, as fundações e os tribunais", "o Presidente da República, as assembleias municipais, o Governo e os tribunais", "o Presidente da República, a Assembleia da República, o Governo, as regiões autónomas o e os tribunais", "o Presidente da República, a Assembleia da República, o Governo e os tribunais"], "correct": "o Presidente da República, a Assembleia da República, o Governo e os tribunais" },
+
+{ "id": 43, "topic": "III", "question": "Consideram-se práticas discriminatórias as ações ou omissões em razão do género, credo, nacionalidade ou origem étnica, que recusem ou coloquem em causa…", "options": ["a limitação de acesso aos cuidados de saúde prestados em estabelecimentos de saúde públicos ou privados", "o acesso a locais públicos ou abertos ao público", "a venda, doação ou transação de prédios rústicos ou urbanos", "Todas as afirmações anteriores estão incorretas"], "correct": "Todas as afirmações anteriores estão incorretas" },
+
+{ "id": 44, "topic": "III", "question": "As funções da PSP, previstas no artigo 272.º da CRP, são…", "options": ["defender a legalidade democrática, garantir a segurança interna e os direitos dos cidadãos", "defender a ilegalidade democrática, garantir o Estado de Direito e os direitos das instituições públicas", "manter a ordem e paz públicas e garantir a segurança externa de todos os portugueses", "Todas as afirmações anteriores estão erradas"], "correct": "defender a legalidade democrática, garantir a segurança interna e os direitos dos cidadãos" },
+
+{ "id": 45, "topic": "III", "question": "São símbolos nacionais e língua oficial, de acordo com o artigo 11.º da CRP…", "options": ["o Presidente da República e a Bandeira Nacional, e a língua oficial é o Mirandês", "a Bandeira Nacional e o Hino Nacional, a Portuguesa, e a língua oficial é o Português", "o Presidente da República, o Governo e as regiões autónomas, e a língua oficial é o Português", "o Presidente da Assembleia República, o Governo e os tribunais, e a língua oficial é o Português"], "correct": "a Bandeira Nacional e o Hino Nacional, a Portuguesa, e a língua oficial é o Português" },
+
+{ "id": 46, "topic": "IV", "question": "Todo indivíduo tem direito…", "options": ["à educação, ao desporto e à segurança individual e coletiva", "à vida, à liberdade, à autocracia e à segurança interna e externa", "à vida, à liberdade e à segurança pessoal", "à saúde, ao desporto e à liberdade religiosa."], "correct": "à vida, à liberdade e à segurança pessoal" },
+
+{ "id": 47, "topic": "IV", "question": "Todos os seres humanos nascem…", "options": ["livres e iguais em dignidade e em direitos", "livres e iguais em dignidade e em direitos, exceto os apátridas", "livres e desiguais em dignidade e sobretudo nos direitos económicos e sociais", "livres e desiguais em dignidade e em direitos"], "correct": "livres e iguais em dignidade e em direitos" },
+
+{ "id": 48, "topic": "IV", "question": "É proibido, sob todas as formas…", "options": ["deter as pessoas, privando-as da sua liberdade", "manter as pessoas em escravatura ou em servidão, exceto se for com o seu consentimento", "manter as pessoas em escravatura ou em servidão", "Todas as afirmações anteriores estão incorretas"], "correct": "manter as pessoas em escravatura ou em servidão" },
+
+{ "id": 49, "topic": "IV", "question": "Toda a pessoa acusada de um ato delituoso presume-se…", "options": ["inocente, até que a sua culpabilidade fique legalmente provada no decurso de um processo", "criminoso, até que a sua inocência fique legalmente provada no decurso de um processo público, em que todas as garantias necessárias de defesa lhe sejam asseguradas", "absolvido, até que a sua culpabilidade fique legalmente provada no decurso de um processo particular, em que todas as garantias necessárias de defesa lhe sejam garantidas", "culpado, até que a sua inocência fique legalmente provada no decurso de um processo público, em que todas as garantias necessárias de defesa lhe sejam asseguradas"], "correct": "inocente, até que a sua culpabilidade fique legalmente provada no decurso de um processo" },
+
+{ "id": 50, "topic": "IV", "question": "Toda a pessoa tem direito à liberdade de reunião e de associação pacíficas.", "options": ["Ninguém pode ser obrigado a fazer parte de uma associação, exceto as associações sindicais ou profissionais", "Ninguém pode ser obrigado a fazer parte de uma associação", "Ninguém pode ser obrigado a fazer parte de uma associação, exceto se esta estiver em conformidade com os bons costumes", "Ninguém pode ser obrigado a fazer parte de uma associação, exceto os menores de 18 anos"], "correct": "Ninguém pode ser obrigado a fazer parte de uma associação" },
+
+{ "id": 51, "topic": "V", "question": "Nos termos da sua Lei Orgânica, a PSP tem por missão…", "options": ["assegurar a legalidade democrática, garantir a segurança interna e os direitos dos cidadãos, nos termos da Constituição e da lei", "assegurar a legalidade autocrática, garantir a segurança interna e os direitos dos cidadãos, nos termos da Constituição e da lei", "assegurar a legalidade democrática, garantir a segurança interna, a segurança externa e os direitos dos cidadãos, nos termos da Constituição e da lei", "assegurar a legalidade autocrática, garantir a segurança interna, a segurança externa e os direitos dos cidadãos, nos termos da Constituição e da lei"], "correct": "assegurar a legalidade democrática, garantir a segurança interna e os direitos dos cidadãos, nos termos da Constituição e da lei" },
+
+{ "id": 52, "topic": "V", "question": "Nos termos da sua Lei Orgânica, a PSP depende…", "options": ["do Primeiro-Ministro", "do membro do Governo responsável pela área da justiça", "do membro do Governo responsável pela área da administração interna", "do membro do Governo responsável pela área da defesa nacional"], "correct": "do membro do Governo responsável pela área da administração interna" },
+
+{ "id": 53, "topic": "V", "question": "Em situações de normalidade institucional, as atribuições da PSP são as decorrentes da legislação de segurança interna, nomeadamente da sua Lei Orgânica. Constitui atribuição da PSP…", "options": ["garantir e fiscalizar o cumprimento da lei nas áreas de jurisdição do sistema de autoridade marítima, com vista, nomeadamente, a preservar a regularidade das atividades marítimas", "garantir a ordem e a tranquilidade públicas e a segurança e a proteção das pessoas e dos bens", "prevenir e investigar as infrações tributárias, fiscais e aduaneiras, bem como fiscalizar e controlar a circulação de mercadorias sujeitas à ação tributária, fiscal ou aduaneira", "Todas as afirmações anteriores estão corretas"], "correct": "garantir a ordem e a tranquilidade públicas e a segurança e a proteção das pessoas e dos bens" },
+
+{ "id": 54, "topic": "V", "question": "Nos termos do artigo 17.º da Lei Orgânica da PSP, a sua estrutura geral compreende…", "options": ["os departamentos, os postos e os serviços partilhados", "o Comando-Geral, os serviços administrativos e a Unidade Especial", "a Direção Nacional, as unidades de polícia e os estabelecimentos de ensino policial", "a Direção Nacional, as unidades de polícia e os postos de atendimento"], "correct": "a Direção Nacional, as unidades de polícia e os estabelecimentos de ensino policial" },
+
+{ "id": 55, "topic": "V", "question": "Os estabelecimentos de ensino policial existentes na PSP são…", "options": ["a Escola de Oficiais, a Escola de Chefes e a Escola de Agentes", "a Escola de Oficiais e a Escola Prática de Polícia", "o Instituto Superior de Ciências Policiais e Segurança Interna, a Escola de Chefes e a Escola de Agentes", "o Instituto Superior de Ciências Policiais e Segurança Interna e a Escola Prática de Polícia"], "correct": "o Instituto Superior de Ciências Policiais e Segurança Interna e a Escola Prática de Polícia" },
+
+{ "id": 56, "topic": "V", "question": "Os comandos territoriais da PSP podem ser…", "options": ["comandos regionais, metropolitanos ou distritais", "comandos autónomos, metropolitanos ou zonais", "comandos regionais, urbanos ou rurais", "comandos zonais, metropolitanos ou distritais"], "correct": "comandos regionais, metropolitanos ou distritais" },
+
+{ "id": 57, "topic": "V", "question": "Os comandos metropolitanos de polícia têm sede em…", "options": ["Lisboa, Braga, Coimbra e Porto", "Lisboa e Porto", "Lisboa, Setúbal, Braga e Funchal", "Lisboa, Porto, Faro e Coimbra"], "correct": "Lisboa e Porto" },
+
+{ "id": 58, "topic": "V", "question": "Para efeitos do disposto na Lei Orgânica da PSP, consideram-se unidades de polícia…", "options": ["os comandos territoriais e a Unidade Especial de Polícia", "a Unidade Especial de Polícia, os comandos metropolitanos e os estabelecimentos de ensino policial", "os comandos regionais, os comandos metropolitanos e os comandos distritais da PSP", "a Inspeção, os comandos territoriais, a Unidade Especial de Polícia e o Departamento de Operações"], "correct": "os comandos territoriais e a Unidade Especial de Polícia" },
+
+{ "id": 59, "topic": "V", "question": "Conforme previsto no artigo 12.º da sua Lei Orgânica, a PSP, no âmbito das suas atribuições, utiliza as medidas de polícia…", "options": ["por iniciativa própria dos órgãos de polícia criminal", "por mandado do juiz ou do Ministério Público", "legalmente previstas e nas condições e termos da Constituição e da Lei de Segurança Interna", "por mandado do Juiz de Instrução Criminal para julgamento sob a forma sumária"], "correct": "legalmente previstas e nas condições e termos da Constituição e da Lei de Segurança Interna" },
+
+{ "id": 60, "topic": "V", "question": "Os meios de coerção não podem…", "options": ["deixar de ser apresentados imediatamente, ou no mais curto prazo possível, sem exceder as 48 horas, ao juiz de instrução", "ser usados para além do bom senso do homem médio comum", "ser usados para além do estritamente necessário;", "deixar de ser apresentados imediatamente ao juiz territorialmente competente"], "correct": "ser usados para além do estritamente necessário;" },
+
+{ "id": 61, "topic": "V", "question": "A prestação de serviços especiais acontece…", "options": ["mediante a utilização dos elementos de serviço ao Corpo de Intervenção", "mediante a utilização do efetivo do Grupo de Operações Especiais", "mediante solicitação, que, após serem autorizados pela entidade competente, são remunerados pelos requisitantes", "mediante determinação, sendo o pessoal com funções policiais remunerado pelo Fundo de Garantia de Serviços Especiais"], "correct": "mediante solicitação, que, após serem autorizados pela entidade competente, são remunerados pelos requisitantes" },
+
+{ "id": 62, "topic": "V", "question": "O Corpo de Intervenção constitui uma força de reserva à ordem do Diretor Nacional, especialmente preparada e destinada a ser utilizada…", "options": ["em ações de manutenção e reposição de ordem pública", "para a segurança pessoal de altas entidades, membros de órgãos de soberania, proteção policial de testemunhas ou outros cidadãos sujeitos a ameaça", "para combater situações de violência declarada, cuja resolução ultrapasse os meios normais de atuação", "especialmente na aplicação de canídeos no quadro de competências da PSP"], "correct": "em ações de manutenção e reposição de ordem pública" },
+
+{ "id": 63, "topic": "V", "question": "A Unidade Especial de Polícia compreende na sua constituição…", "options": ["seis subunidades", "três subunidades", "quatro subunidades", "cinco subunidades"], "correct": "cinco subunidades" },
+
+{ "id": 64, "topic": "V", "question": "Após a conclusão com sucesso do Curso de Formação de Agentes, os alunos são nomeados definitivamente na categoria de agente, a qual se inicia com um período experimental de…", "options": ["seis meses", "um ano", "dois anos", "três anos"], "correct": "um ano" },
+
+{ "id": 65, "topic": "V", "question": "Nos termos do artigo 3.º da Lei Orgânica, constituem atribuições da PSP…", "options": ["garantir a ordem e tranquilidade públicas, segurança e proteção de pessoas e bens", "garantir a execução dos atos administrativos emanados da autoridade competente que visem impedir o incumprimento da lei ou a sua violação continuada", "contribuir para a formação e informação em matéria de segurança dos cidadãos", "Todas as afirmações estão corretas"], "correct": "Todas as afirmações estão corretas" },
+
+{ "id": 66, "topic": "V", "question": "Nos termos da Lei Orgânica da PSP, no caso de atribuições cometidas simultaneamente à Guarda Nacional Republicana, a área de responsabilidade da PSP é definida por portaria do ministro da tutela. Fora da sua área de responsabilidade, a intervenção da PSP depende…", "options": ["de ordem judicial do tribunal da área", "do pedido de outra força de segurança, de ordem especial ou de imposição legal", "de ordem do presidente da câmara municipal da área", "Todas as afirmações estão corretas"], "correct": "do pedido de outra força de segurança, de ordem especial ou de imposição legal" },
+
+{ "id": 67, "topic": "VI", "question": "A condição policial, conforme definida no Estatuto da PSP, caracteriza-se…", "options": ["pela subordinação ao interesse público e privado", "pela adoção, em todas as situações, de uma conduta pessoal e profissional conforme aos princípios éticos e deontológicos da função policial", "pela defesa e legalidade do despotismo, da segurança interna e dos direitos fundamentais dos cidadãos, nos termos da Constituição e da lei", "Todas as afirmações anteriores estão corretas."], "correct": "pela adoção, em todas as situações, de uma conduta pessoal e profissional conforme aos princípios éticos e deontológicos da função policial" },
+
+{ "id": 68, "topic": "VI", "question": "Os polícias estão investidos do poder de autoridade nos termos e limites previstos na Constituição e na lei. São deveres especiais dos polícias…", "options": ["agir com a determinação exigível, recorrendo à força, mesmo para além do estritamente necessário, para cumprir uma tarefa legalmente exigida ou autorizada", "atuar para garantir a proteção das vítimas de crimes, podendo estabelecer prioridades em razão de ascendência, sexo, raça, língua, território de origem, religião, convicções políticas ou ideológicas, condição social ou orientação sexual", "observar estritamente, e com a diligência devida, a tramitação, os prazos e os requisitos exigidos pela lei, sempre que procedam à detenção de alguém", "garantir a proteção das vítimas de crimes, dos detidos e das pessoas que se encontrem sob a sua custódia ou proteção, sem ser limitada pela honra e dignidade da pessoa humana."], "correct": "observar estritamente, e com a diligência devida, a tramitação, os prazos e os requisitos exigidos pela lei, sempre que procedam à detenção de alguém" },
+
+{ "id": 69, "topic": "VI", "question": "A carreira de agente de polícia é uma carreira especial de complexidade funcional de grau 2. Assim…", "options": ["são definitivamente nomeados na categoria de agente os alunos habilitados com o Curso de Formação de Agentes ministrado no Instituto Superior de Ciências Policiais e Segurança Interna", "são nomeados na categoria de agente os alunos habilitados com o Curso de Formação de Oficiais de Polícia ministrado na Escola Prática de Polícia;", "a nomeação definitiva dos polícias inicia-se com o período experimental de dois anos", "são nomeados na categoria de agente os alunos habilitados com o Curso de Formação de Agentes ministrado na Escola Prática de Polícia"], "correct": "são nomeados na categoria de agente os alunos habilitados com o Curso de Formação de Agentes ministrado na Escola Prática de Polícia" },
+
+{ "id": 70, "topic": "VI", "question": "A alteração ou interrupção de período de férias dos polícias pode ocorrer do seguinte modo:", "options": ["Por exigência imperiosa de serviço, mediante despacho fundamentado do superior hierárquico, podendo ser alterado ou interrompido o período de férias já marcado", "Por exigência imperiosa de serviço, mediante despacho fundamentado do comandante do comando, podendo ser alterado ou interrompido o período de férias já marcado", "Por exigência imperiosa de serviço, mediante despacho fundamentado do Diretor Nacional, podendo ser alterado ou interrompido o período de férias já marcado", "Mesmo por exigência imperiosa de serviço, nunca pode ser alterado ou interrompido o período de férias já marcado"], "correct": "Por exigência imperiosa de serviço, mediante despacho fundamentado do Diretor Nacional, podendo ser alterado ou interrompido o período de férias já marcado" },
+{ "id": 71, "topic": "VI", "question": "A PSP possui as seguintes carreiras:", "options": ["Oficial, Chefe e Agente", "Oficial, Subchefe e Guarda", "Intendente, Comissário e Agente", "Oficial Superior, Comissário, Chefe e Agente"], "correct": "Oficial, Chefe e Agente" },
+
+{ "id": 72, "topic": "VI", "question": "Qual das seguintes ordenações de categorias é a correta, do mais graduado para o menos graduado:", "options": ["Agente Principal, Comissário, Subcomissário, Subintendente", "Subcomissário, Intendente, Agente Principal, Agente", "Comissário, Subintendente, Agente Coordenador, Chefe, Agente", "Superintendente-Chefe, Intendente, Chefe Coordenador, Agente Coordenador, Agente Principal"], "correct": "Superintendente-Chefe, Intendente, Chefe Coordenador, Agente Coordenador, Agente Principal" },
+
+{ "id": 73, "topic": "VI", "question": "O artigo 25.º do Estatuto dos polícias da PSP estabelece que os polícias têm direito ao uso e porte de arma e munições de qualquer tipo…", "options": ["desde que distribuídas pelo Estado, e estão sujeitos a um plano de formação e de certificação constituído por prova teórica e prática de tiro", "desde que distribuídas pelo Estado, ficando o treino de tiro à responsabilidade dos mesmos a efetuar em clubes de tiro certificados", "desde que adquiridas pelos próprios, ficando o treino de tiro à responsabilidade dos mesmos a efetuar em clubes de tiro certificados", "desde que adquiridas pelos próprios, e estão sujeitos a um plano de formação e de certificação constituído por prova teórica e prática de tiro"], "correct": "desde que distribuídas pelo Estado, e estão sujeitos a um plano de formação e de certificação constituído por prova teórica e prática de tiro" },
+
+{ "id": 74, "topic": "VI", "question": "No âmbito do livre-trânsito e direito de acesso, previsto no artigo 20.º do Estatuto, aos polícias…", "options": ["quando devidamente identificados, é facultada a entrada livre em estabelecimentos e outros locais públicos, abertos ao público e privados, para a realização de ações policiais", "só quando fardados e em missão de serviço, é facultada a entrada livre em estabelecimentos e outros locais públicos, abertos ao público e privados, para a realização de ações policiais", "quando devidamente identificados, mesmo fora de horas, ou em espaços privados mas abertos ao público, é facultada a entrada livre, para a realização de ações policiais", "quando devidamente identificados e em missão de serviço, é facultada a entrada livre em estabelecimentos e outros locais públicos ou abertos ao público para a realização de ações policiais"], "correct": "quando devidamente identificados e em missão de serviço, é facultada a entrada livre em estabelecimentos e outros locais públicos ou abertos ao público para a realização de ações policiais" },
+
+{ "id": 75, "topic": "VI", "question": "No que concerne à utilização dos meios de transporte, o Estatuto dos polícias da PSP prevê que…", "options": ["aos polícias, quando devidamente identificados e em missão de serviço, é facultado o livre acesso, na sua área de residência, aos transportes coletivos terrestres, fluviais e marítimos", "aos polícias, quando devidamente identificados e em missão de serviço, é facultado o livre acesso, em todo o território nacional, aos transportes coletivos terrestres, fluviais e marítimos", "aos polícias é facultado o livre acesso, nas zonas metropolitanas de Lisboa e do Porto, aos transportes coletivos terrestres, fluviais e marítimos, independentemente do local onde exercem funções", "aos polícias é facultado o livre acesso, em todo o território nacional, aos transportes coletivos terrestres, fluviais e marítimos"], "correct": "aos polícias, quando devidamente identificados e em missão de serviço, é facultado o livre acesso, em todo o território nacional, aos transportes coletivos terrestres, fluviais e marítimos" },
+
+{ "id": 76, "topic": "VI", "question": "Constitui uma das condições de promoção para a categoria de Agente Principal…", "options": ["ter, pelo menos, o tempo mínimo de quatro anos de serviço efetivo na categoria de agente", "ter, pelo menos, o tempo mínimo de cinco anos de serviço efetivo na categoria de agente", "ter, pelo menos, o tempo mínimo de seis anos de serviço efetivo na categoria de agente", "ter, pelo menos, o tempo mínimo de sete anos de serviço efetivo na categoria de agente"], "correct": "ter, pelo menos, o tempo mínimo de seis anos de serviço efetivo na categoria de agente" },
+
+{ "id": 77, "topic": "VI", "question": "O Estatuto Profissional da PSP aplica-se…", "options": ["ao pessoal com funções policiais e sem funções policiais da PSP, exceto em período de ausência por doença prolongada", "ao pessoal com funções policiais e sem funções policiais da PSP, em qualquer situação", "ao pessoal com funções policiais da PSP, designados por polícias, em qualquer situação;", "ao pessoal com funções policiais da PSP, designados por polícias, exceto em período de férias"], "correct": "ao pessoal com funções policiais da PSP, designados por polícias, em qualquer situação;" },
+
+{ "id": 78, "topic": "VII", "question": "A União Europeia é oficialmente criada…", "options": ["pelo Tratado de Maastricht", "pelo Tratado de Roma", "pelo Tratado de Lisboa", "pelo Tratado de Madrid"], "correct": "pelo Tratado de Maastricht" },
+
+{ "id": 79, "topic": "VII", "question": "A presidência da Comissão Europeia atualmente é ocupada por…", "options": ["Josep Borrell", "Emily O’Reilly", "Ursula von der Leyen", "Charles Michel"], "correct": "Ursula von der Leyen" },
+
+{ "id": 80, "topic": "VII", "question": "O Conselho da União Europeia e o Parlamento Europeu…", "options": ["negoceiam, aprovam e adotam conjuntamente a legislação europeia", "negoceiam, aprovam e adotam separadamente, a política europeia", "adotam, aprovam ou rejeitam pareceres conjuntamente", "legislam, aprovam e adotam separadamente a política europeia de segurança comum"], "correct": "negoceiam, aprovam e adotam conjuntamente a legislação europeia" }
+];
+// ===================== FUNÇÃO PARA EMBARALHAR =====================
+// ===================== ELEMENTOS =====================
+const quizForm = document.getElementById("quizForm");
+const timerDiv = document.getElementById("timer");
+const submitBtn = document.getElementById("submit");
+const resultDiv = document.getElementById("result");
+
+// ===================== AGRUPAR POR TÓPICO =====================
+const topics = {};
+questionsData.forEach(q => {
+  if (!topics[q.topic]) topics[q.topic] = [];
+  topics[q.topic].push(q);
+});
+
+const topicNames = {
+  "I": "Português até ao 12ºano",
+  "II": "Temas de Cultura Geral",
+  "III": "Constituição da República Portuguesa (CRP)",
+  "IV": "Declaração Universal Dos Direitos Humanos (DUDH)",
+  "V": "Lei Orgânica da Polícia de Segurança Publica",
+  "VI": "Estatuto Profissional do Pessoal com Funções Policiais da PSP",
+  "VII": "Instituições da União Europeia"
+};
+
+// ===================== FUNÇÃO PARA EMBARALHAR ARRAY =====================
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+// ===================== GERAR QUIZ =====================
+function generateQuiz() {
+  // Limpa quiz antigo
+  quizForm.innerHTML = "";
+  testQuestions = [];
+  let questionCounter = 1;
+
+  Object.keys(topics).forEach(topicKey => {
+    const topicQuestions = shuffleArray([...topics[topicKey]]); // copiar antes de embaralhar
+
+    // Título do tópico
+    const h2 = document.createElement("h2");
+    h2.textContent = `Tópico ${topicKey} - ${topicNames[topicKey]}`;
+    quizForm.appendChild(h2);
+
+    topicQuestions.forEach(q => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.style.marginBottom = "15px";
+
+      const p = document.createElement("p");
+      p.innerHTML = `${questionCounter}. ${q.question}`;
+      questionCounter++;
+      div.appendChild(p);
+
+      // Embaralhar opções mantendo "Todas as anteriores" no fim
+      let opts = [...q.options];
+      let todasOption;
+      const todasIndex = opts.findIndex(o => o.startsWith("Todas"));
+      if (todasIndex !== -1) {
+        todasOption = opts.splice(todasIndex, 1)[0];
+      }
+      opts = shuffleArray(opts);
+      if (todasOption) opts.push(todasOption);
+
+      opts.forEach((opt, i) => {
+        const label = document.createElement("label");
+        label.style.display = "block";
+        label.style.marginBottom = "4px";
+
+        const letra = document.createElement("span");
+        letra.textContent = `O ${String.fromCharCode(65 + i)}) `;
+
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = `q${q.id}`;
+        input.value = i;
+        input.style.marginLeft = "5px";
+        input.style.marginRight = "5px";
+
+        label.appendChild(letra);
+        label.appendChild(input);
+
+        const texto = document.createElement("span");
+        texto.textContent = opt;
+        label.appendChild(texto);
+
+        div.appendChild(label);
+      });
+
+      quizForm.appendChild(div);
+
+      testQuestions.push({
+        inputName: `q${q.id}`,
+        correct: q.correct,
+        optionsRendered: opts,
+        questionDiv: div
+      });
+    });
+  });
+}
+
+// ===================== TIMER =====================
+let time = 2 * 60 * 60; // 2 horas
+let timerInterval;
+function startTimer() {
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    const h = String(Math.floor(time / 3600)).padStart(2, '0');
+    const m = String(Math.floor((time % 3600) / 60)).padStart(2, '0');
+    const s = String(time % 60).padStart(2, '0');
+    timerDiv.textContent = `${h}:${m}:${s}`;
+    if (time <= 0) {
+      clearInterval(timerInterval);
+      submitTest();
+    }
+    time--;
+  }, 1000);
+}
+
+// ===================== SUBMETER TESTE =====================
+function submitTest() {
+  clearInterval(timerInterval);
+  let scoreCount = 0;
+
+  testQuestions.forEach(q => {
+    // Limpar feedback antigo
+    q.questionDiv.querySelectorAll('.feedback').forEach(f => f.remove());
+    q.questionDiv.style.border = "2px solid #ccc";
+
+    const feedback = document.createElement("div");
+    feedback.className = "feedback";
+    feedback.style.marginTop = "8px";
+    feedback.style.fontWeight = "bold";
+
+    const selected = document.querySelector(`input[name="${q.inputName}"]:checked`);
+
+    if (selected) {
+      const userIndex = parseInt(selected.value);
+      const userAnswerText = q.optionsRendered[userIndex];
+
+      if (userAnswerText === q.correct) {
+        scoreCount++;
+        q.questionDiv.style.border = "2px solid green";
+        feedback.style.color = "green";
+        feedback.textContent = "✔ Resposta correta";
+      } else {
+        q.questionDiv.style.border = "2px solid red";
+        feedback.style.color = "red";
+        feedback.innerHTML = `
+          ✘ Resposta errada<br>
+          A tua resposta: O ${String.fromCharCode(65 + userIndex)}) ${userAnswerText}<br>
+          Resposta correta: ${q.correct}
+        `;
+      }
+    } else {
+      q.questionDiv.style.border = "2px solid orange";
+      feedback.style.color = "orange";
+      feedback.innerHTML = `
+          ⚠ Pergunta não respondida<br>
+          Resposta correta: ${q.correct}
+        `;
+    }
+
+    q.questionDiv.appendChild(feedback);
+
+    // Bloquear inputs após submeter
+    q.questionDiv.querySelectorAll("input[type=radio]").forEach(radio => {
+      radio.disabled = true;
+    });
+  });
+
+  const finalScore = (scoreCount / testQuestions.length) * 20;
+  resultDiv.innerHTML = `
+  Acertaste ${scoreCount}/${testQuestions.length} perguntas.<br>
+  Nota final: <br>
+  <span style="font-size:2em"><strong>${finalScore.toFixed(2)}/20</strong></span>
+`;
+// Mostrar Apto / Não Apto
+const aptoDiv = document.createElement("div");
+aptoDiv.style.textAlign = "center";
+aptoDiv.style.marginTop = "10px";
+aptoDiv.style.fontSize = "60px"; // aumenta o tamanho
+aptoDiv.style.color = finalScore >= 10 ? "green" : "red";
+aptoDiv.textContent = finalScore >= 10 ? "APTO" : "NÃO APTO";
+
+// Remove antigo, se existir
+const oldApto = document.getElementById("aptoDiv");
+if (oldApto) oldApto.remove();
+aptoDiv.id = "aptoDiv";
+
+resultDiv.appendChild(aptoDiv);
+  testSubmitted = true;
+  submitBtn.textContent = "Novo Teste";
+}
+
+// ===================== INICIALIZAR QUIZ =====================
+generateQuiz();
+startTimer();
+
+// ===================== EVENTO BOTÃO =====================
+submitBtn.addEventListener("click", e => {
+  e.preventDefault();
+
+  if (!testSubmitted) {
+    submitTest();
+  } else {
+    // Repetir teste: regenera perguntas, embaralha, reinicia timer
+    generateQuiz();
+    time = 2 * 60 * 60; // reset timer
+    startTimer();
+    testSubmitted = false;
+    submitBtn.textContent = "Submeter Teste";
+    resultDiv.textContent = "";
+  }
+});
+</script>
+</body>
+</html>
