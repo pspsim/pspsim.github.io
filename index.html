@@ -63,44 +63,64 @@ Caso encontrem alguma pergunta em que a resposta esteja errada, ou a mesma tenha
 <script>
 let testSubmitted = false;
 let testQuestions = [];
+let time = 2 * 60 * 60; // 2 horas
+let timerInterval;
 let questionsData = [];
-let topics = {}; // 🔹 ÚNICO topics GLOBAL (importante)
 
 // ===================== CARREGAR JSON =====================
 fetch("questions.json")
   .then(response => response.json())
   .then(data => {
     questionsData = data;
-    inicializarTudo(); // só arranca quando o JSON já chegou
-  });
+    inicializarTudo();
+  })
+  .catch(err => console.error("Erro ao carregar JSON:", err));
 
-// ===================== ELEMENTOS =====================
-const quizForm = document.getElementById("quizForm");
-const timerDiv = document.getElementById("timer");
-const submitBtn = document.getElementById("submit");
-const resultDiv = document.getElementById("result");
-
-const topicNames = {
-  "I": "Português até ao 12ºano",
-  "II": "Temas de Cultura Geral",
-  "III": "Constituição da República Portuguesa (CRP)",
-  "IV": "Declaração Universal Dos Direitos Humanos (DUDH)",
-  "V": "Lei Orgânica da Polícia de Segurança Publica",
-  "VI": "Estatuto Profissional do Pessoal com Funções Policiais da PSP",
-  "VII": "Instituições da União Europeia"
-};
-
-// ===================== FUNÇÃO PARA EMBARALHAR ARRAY =====================
+// ===================== FUNÇÕES AUXILIARES =====================
 function shuffleArray(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+  for (let i = arr.length -1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i+1));
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
   return arr;
 }
 
+// ===================== INICIALIZAR =====================
+function inicializarTudo() {
+  const quizForm = document.getElementById("quizForm");
+  const timerDiv = document.getElementById("timer");
+  const submitBtn = document.getElementById("submit");
+  const resultDiv = document.getElementById("result");
+
+  const topicNames = {
+    "I": "Português até ao 12ºano",
+    "II": "Temas de Cultura Geral",
+    "III": "Constituição da República Portuguesa (CRP)",
+    "IV": "Declaração Universal Dos Direitos Humanos (DUDH)",
+    "V": "Lei Orgânica da Polícia de Segurança Publica",
+    "VI": "Estatuto Profissional do Pessoal com Funções Policiais da PSP",
+    "VII": "Instituições da União Europeia"
+  };
+
+  // Agrupar perguntas por tópico
+  const topics = {};
+  questionsData.forEach(q => {
+    if (!topics[q.topic]) topics[q.topic] = [];
+    topics[q.topic].push(q);
+  });
+
+  generateQuiz(topics, topicNames, quizForm);
+  startTimer(timerDiv);
+
+  submitBtn.addEventListener("click", e => {
+    e.preventDefault();
+    if (!testSubmitted) submitTest(resultDiv, quizForm, timerDiv, submitBtn);
+    else resetTest(resultDiv, quizForm, timerDiv, submitBtn, topics, topicNames);
+  });
+}
+
 // ===================== GERAR QUIZ =====================
-function generateQuiz() {
+function generateQuiz(topics, topicNames, quizForm) {
   quizForm.innerHTML = "";
   testQuestions = [];
   let questionCounter = 1;
@@ -108,6 +128,7 @@ function generateQuiz() {
   Object.keys(topics).forEach(topicKey => {
     const topicQuestions = shuffleArray([...topics[topicKey]]);
 
+    // Título do tópico
     const h2 = document.createElement("h2");
     h2.textContent = `Tópico ${topicKey} - ${topicNames[topicKey]}`;
     quizForm.appendChild(h2);
@@ -122,13 +143,10 @@ function generateQuiz() {
       questionCounter++;
       div.appendChild(p);
 
-      // Embaralhar opções mantendo "Todas..." no fim
       let opts = [...q.options];
       let todasOption;
       const todasIndex = opts.findIndex(o => o.startsWith("Todas"));
-      if (todasIndex !== -1) {
-        todasOption = opts.splice(todasIndex, 1)[0];
-      }
+      if (todasIndex !== -1) todasOption = opts.splice(todasIndex,1)[0];
       opts = shuffleArray(opts);
       if (todasOption) opts.push(todasOption);
 
@@ -144,8 +162,7 @@ function generateQuiz() {
         input.type = "radio";
         input.name = `q${q.id}`;
         input.value = i;
-        input.style.marginLeft = "5px";
-        input.style.marginRight = "5px";
+        input.style.margin = "0 5px";
 
         label.appendChild(letra);
         label.appendChild(input);
@@ -170,32 +187,28 @@ function generateQuiz() {
 }
 
 // ===================== TIMER =====================
-let time = 2 * 60 * 60; // 2 horas
-let timerInterval;
-
-function startTimer() {
+function startTimer(timerDiv) {
   clearInterval(timerInterval);
   timerInterval = setInterval(() => {
-    const h = String(Math.floor(time / 3600)).padStart(2, '0');
-    const m = String(Math.floor((time % 3600) / 60)).padStart(2, '0');
-    const s = String(time % 60).padStart(2, '0');
+    const h = String(Math.floor(time/3600)).padStart(2,'0');
+    const m = String(Math.floor((time %3600)/60)).padStart(2,'0');
+    const s = String(time %60).padStart(2,'0');
     timerDiv.textContent = `${h}:${m}:${s}`;
-
-    if (time <= 0) {
+    if(time<=0){
       clearInterval(timerInterval);
-      submitTest();
+      document.getElementById("submit").click();
     }
     time--;
   }, 1000);
 }
 
-// ===================== SUBMETER TESTE =====================
-function submitTest() {
+// ===================== SUBMETER =====================
+function submitTest(resultDiv, quizForm, timerDiv, submitBtn){
   clearInterval(timerInterval);
   let scoreCount = 0;
 
   testQuestions.forEach(q => {
-    q.questionDiv.querySelectorAll('.feedback').forEach(f => f.remove());
+    q.questionDiv.querySelectorAll(".feedback").forEach(f=>f.remove());
     q.questionDiv.style.border = "2px solid #ccc";
 
     const feedback = document.createElement("div");
@@ -205,11 +218,11 @@ function submitTest() {
 
     const selected = document.querySelector(`input[name="${q.inputName}"]:checked`);
 
-    if (selected) {
+    if(selected){
       const userIndex = parseInt(selected.value);
       const userAnswerText = q.optionsRendered[userIndex];
 
-      if (userAnswerText === q.correct) {
+      if(userAnswerText === q.correct){
         scoreCount++;
         q.questionDiv.style.border = "2px solid green";
         feedback.style.color = "green";
@@ -217,81 +230,47 @@ function submitTest() {
       } else {
         q.questionDiv.style.border = "2px solid red";
         feedback.style.color = "red";
-        feedback.innerHTML = `
-          ✘ Resposta errada<br>
-          A tua resposta: O ${String.fromCharCode(65 + userIndex)}) ${userAnswerText}<br>
-          Resposta correta: ${q.correct}
-        `;
+        feedback.innerHTML = `✘ Resposta errada<br>
+        A tua resposta: O ${String.fromCharCode(65+userIndex)}) ${userAnswerText}<br>
+        Resposta correta: ${q.correct}`;
       }
     } else {
       q.questionDiv.style.border = "2px solid orange";
       feedback.style.color = "orange";
-      feedback.innerHTML = `
-          ⚠ Pergunta não respondida<br>
-          Resposta correta: ${q.correct}
-        `;
+      feedback.innerHTML = `⚠ Pergunta não respondida<br>Resposta correta: ${q.correct}`;
     }
 
     q.questionDiv.appendChild(feedback);
 
-    q.questionDiv.querySelectorAll("input[type=radio]").forEach(radio => {
-      radio.disabled = true;
-    });
+    q.questionDiv.querySelectorAll("input[type=radio]").forEach(radio=>radio.disabled=true);
   });
 
-  const finalScore = (scoreCount / testQuestions.length) * 20;
-
-  resultDiv.innerHTML = `
-    Acertaste ${scoreCount}/${testQuestions.length} perguntas.<br>
-    Nota final: <br>
-    <span style="font-size:2em"><strong>${finalScore.toFixed(2)}/20</strong></span>
-  `;
+  const finalScore = (scoreCount / testQuestions.length)*20;
+  resultDiv.innerHTML = `Acertaste ${scoreCount}/${testQuestions.length} perguntas.<br>
+    Nota final: <span style="font-size:2em"><strong>${finalScore.toFixed(2)}/20</strong></span>`;
 
   const aptoDiv = document.createElement("div");
+  aptoDiv.id = "aptoDiv";
   aptoDiv.style.textAlign = "center";
   aptoDiv.style.marginTop = "10px";
   aptoDiv.style.fontSize = "60px";
-  aptoDiv.style.color = finalScore >= 10 ? "green" : "red";
-  aptoDiv.textContent = finalScore >= 10 ? "APTO" : "NÃO APTO";
-
-  const oldApto = document.getElementById("aptoDiv");
-  if (oldApto) oldApto.remove();
-
-  aptoDiv.id = "aptoDiv";
+  aptoDiv.style.color = finalScore>=12 ? "green":"red";
+  aptoDiv.textContent = finalScore>=12 ? "APTO":"NÃO APTO";
   resultDiv.appendChild(aptoDiv);
 
   testSubmitted = true;
   submitBtn.textContent = "Novo Teste";
 }
 
-// ===================== INICIALIZAR TUDO (SÓ DEPOIS DO JSON) =====================
-function inicializarTudo() {
-  topics = {}; // limpa e recria
-
-  questionsData.forEach(q => {
-    if (!topics[q.topic]) topics[q.topic] = [];
-    topics[q.topic].push(q);
-  });
-
-  generateQuiz();
-  startTimer();
+// ===================== RESET =====================
+function resetTest(resultDiv, quizForm, timerDiv, submitBtn, topics, topicNames){
+  resultDiv.textContent = "";
+  generateQuiz(topics, topicNames, quizForm);
+  time = 2*60*60;
+  startTimer(timerDiv);
+  testSubmitted = false;
+  submitBtn.textContent = "Submeter Teste";
 }
-
-// ===================== EVENTO BOTÃO =====================
-submitBtn.addEventListener("click", e => {
-  e.preventDefault();
-
-  if (!testSubmitted) {
-    submitTest();
-  } else {
-    generateQuiz();
-    time = 2 * 60 * 60;
-    startTimer();
-    testSubmitted = false;
-    submitBtn.textContent = "Submeter Teste";
-    resultDiv.textContent = "";
-  }
-});
 </script>
 </body>
 </html>
