@@ -524,7 +524,7 @@
 {
     "id": 81,
     "topic": "I",
-    "question": "O que significa a palavra <u>redundante</u>?",
+    "question": "O que significa a palavra <u><b>redundante</b></u>?",
     "options": ["Supérfluo", "Redondo", "Importante", "Redutor"],
     "correct": "Supérfluo"
   },
@@ -585,7 +585,7 @@
   {
     "id": 89,
     "topic": "I",
-    "question": "O verbo sublinhado em \"eu neste momento <u>bebia</u> um café\" encontra-se no:",
+    "question": "O verbo sublinhado em \"eu neste momento <u><b>bebia</b></u> um café\" encontra-se no:",
     "options": ["Pretérito perfeito", "Pretérito imperfeito", "Futuro", "Presente"],
     "correct": "Pretérito imperfeito"
   },
@@ -599,7 +599,7 @@
   {
     "id": 91,
     "topic": "I",
-    "question": "A palavra sublinhada na frase “encontrei o <u>seu</u> livro, Sr.Professor” é um pronome:",
+    "question": "A palavra sublinhada na frase “encontrei o <u><b>seu</b></u> livro, Sr.Professor” é um pronome:",
     "options": ["Demonstrativo", "Imperativo", "Indefinido", "Possessivo"],
     "correct": "Possessivo"
   },
@@ -729,7 +729,7 @@
   {
     "id": 106,
     "topic": "I",
-    "question": "Identifique a relação semântica que a palavra \"sentidos\" estabelece com a palavra \"visão\" na frase seguinte: \"Esta paisagem é um estimulo para os <i>sentidos</i>, em especial para a <i>visão</i>.\"",
+    "question": "Identifique a relação semântica que a palavra \"sentidos\" estabelece com a palavra \"visão\" na frase seguinte: \"Esta paisagem é um estimulo para os <u><b>sentidos</b></u>, em especial para a <u><b>visão</b></u>.\"",
     "options": [
       "Hiperonimia",
       "Holonímia",
