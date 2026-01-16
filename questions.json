@@ -665,5 +665,125 @@
     "question": "Selecione a opção em que a palavra \"alto\" é um advérbio",
     "options": ["Há um ninho de águia no alto daquele monte", "As garças são conhecidas pelo seu pescoço alto", "O galo cantou alto e fez-se ouvir nas redondezas", "Esse ninho ficou num local muito alto e inacessível"],
     "correct": "O galo cantou alto e fez-se ouvir nas redondezas"
+  },
+  {
+    "id": 101,
+    "topic": "II",
+    "question": "Indique quem é o atual Presidente da Assembleia da República",
+    "options": [
+      "Maria de Assunção Andrade Esteves",
+      "José Pedro Aguiar-Branco",
+      "Jaime José de Matos da Gama",
+      "Todas as opções estão erradas"
+    ],
+    "correct": "José Pedro Aguiar-Branco"
+  },
+  {
+    "id": 102,
+    "topic": "II",
+    "question": "O Campeonato do Mundo do Atletismo, decorrido no passado ano de 2025, decorreu no Japão, na cidade de:",
+    "options": [
+      "Sapporo",
+      "Kyoto",
+      "Osaka",
+      "Tóquio"
+    ],
+    "correct": "Tóquio"
+  },
+  {
+    "id": 103,
+    "topic": "II",
+    "question": "Nos Óscares de 2024, quem ganhou o prémio para Melhor Filme?",
+    "options": [
+      "Maestro",
+      "Barbie",
+      "Oppenheimer",
+      "The Zone Of Interest"
+    ],
+    "correct": "Oppenheimer"
+  },
+  {
+    "id": 104,
+    "topic": "I",
+    "question": "Qual das frases complexas seguintes contém uma oração subordinada concessiva?",
+    "options": [
+      "Desde que haja bilhetes suficientes, podemos levar todos os alunos à estreia do espetáculo",
+      "Logo que haja bilhetes suficientes, podemos levar todos os alunos à estreia do espetáculo",
+      "Visto que o preço dos bilhetes é elevado, não posso assistir à estreia desse espetáculo",
+      "Ainda que o preço dos bilhetes seja elevado, não posso perder a estreia desse espetáculo"
+    ],
+    "correct": "Ainda que o preço dos bilhetes seja elevado, não posso perder a estreia desse espetáculo"
+  },
+  {
+    "id": 105,
+    "topic": "I",
+    "question": "Qual das seguintes frases contém a sequência de palavras cujas classes são \"determinante - nome - pronome - verbo - determinante - nome - verbo - nome - advérbio - adjetivo\"?",
+    "options": [
+      "Essa história que humaniza os extraterrestres inspirou vários filmes conhecidos",
+      "O viajante que chegou a Lisboa relatou aventuras verdadeiramente impressionantes",
+      "Certos cientistas que investigam o espaço fazem descobertas bem interessantes",
+      "A possibilidade de viajarmos até Marte não deixa ninguém indiferente"
+    ],
+    "correct": "Certos cientistas que investigam o espaço fazem descobertas bem interessantes"
+  },
+  {
+    "id": 106,
+    "topic": "I",
+    "question": "Identifique a relação semântica que a palavra \"sentidos\" estabelece com a palavra \"visão\" na frase seguinte: \"Esta paisagem é um estimulo para os <i>sentidos</i>, em especial para a <i>visão</i>.\"",
+    "options": [
+      "Hiperonimia",
+      "Holonímia",
+      "Antonimia",
+      "Sinonímia"
+    ],
+    "correct": "Sinonímia"
+  },
+  {
+    "id": 107,
+    "topic": "II",
+    "question": "O atentado terrorista da Christchurch, na Nova Zelândia, que ocorreu em março de 2019, foi perpetrado por um cidadão australiano conotado como:",
+    "options": [
+      "Separatista",
+      "Anarquista",
+      "Supremacista-branco",
+      "Jihadista"
+    ],
+    "correct": "Supremacista-branco"
+  },
+  {
+    "id": 108,
+    "topic": "II",
+    "question": "O movimento Coletes Amarelos, que teve início após o anúncio da subida dos impostos sobre os produtos petrolíferos, teve a sua origem:",
+    "options": [
+      "Em França",
+      "Na Bélgica",
+      "No Reino Unido",
+      "Em Espanha"
+    ],
+    "correct": "Em França"
+  },
+  {
+    "id": 109,
+    "topic": "II",
+    "question": "A APAV, Associação Portuguesa de Apoio à Vitima, é uma instituição sem fins lucrativos com o intuito de, entre outras incumbências:",
+    "options": [
+      "Promover a proteção dos autores de práticas criminais, desde que declarado o arrependimento em sede de julgamento",
+      "Promover a proteção e apoio a vítimas de infrações criminais",
+      "Promover a proteção e apoio das vitimas de violência doméstica, predominantemente",
+      "Todas as opções estão corretas"
+    ],
+    "correct": "Promover a proteção e apoio a vítimas de infrações criminais"
+  },
+  {
+    "id": 110,
+    "topic": "II",
+    "question": "Na sequência da pandemia COVID-19, em julho de 2020, Donald Trump, presidente dos Estados Unidos da América, deu início ao processo de saída daquele país da:",
+    "options": [
+      "Organização Mundial de Saúde",
+      "Organização do Tratado Atlântico Norte",
+      "Fundo Monetário Internacional",
+      "Organização das Nações Unidas"
+    ],
+    "correct": "Organização Mundial de Saúde"
   }
 ]
