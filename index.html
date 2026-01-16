@@ -67,6 +67,14 @@ let testQuestions = [];
 // ===================== ARRAY DE PERGUNTAS =====================
 
 // ===================== FUNÇÃO PARA EMBARALHAR =====================
+let questionsData = [];
+
+fetch("questions.json")
+  .then(response => response.json())
+  .then(data => {
+    questionsData = data;
+    inicializarTudo(); // chama função que cria o quiz
+  });
 // ===================== ELEMENTOS =====================
 const quizForm = document.getElementById("quizForm");
 const timerDiv = document.getElementById("timer");
@@ -266,8 +274,21 @@ resultDiv.appendChild(aptoDiv);
 }
 
 // ===================== INICIALIZAR QUIZ =====================
-generateQuiz();
-startTimer();
+function inicializarTudo() {
+  // ⬇️ TUDO o que já tens abaixo de questionsData fica aqui dentro ⬇️
+
+  // AGRUPAR POR TÓPICO
+  const topics = {};
+  questionsData.forEach(q => {
+    if (!topics[q.topic]) topics[q.topic] = [];
+    topics[q.topic].push(q);
+  });
+
+  // (… todo o teu resto do código igual …)
+
+  generateQuiz();
+  startTimer();
+}
 
 // ===================== EVENTO BOTÃO =====================
 submitBtn.addEventListener("click", e => {
