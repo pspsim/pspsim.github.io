@@ -520,5 +520,80 @@
 
 { "id": 79, "topic": "VII", "question": "A presidência da Comissão Europeia atualmente é ocupada por…", "options": ["Josep Borrell", "Emily O’Reilly", "Ursula von der Leyen", "Charles Michel"], "correct": "Ursula von der Leyen" },
 
-{ "id": 80, "topic": "VII", "question": "O Conselho da União Europeia e o Parlamento Europeu…", "options": ["negoceiam, aprovam e adotam conjuntamente a legislação europeia", "negoceiam, aprovam e adotam separadamente, a política europeia", "adotam, aprovam ou rejeitam pareceres conjuntamente", "legislam, aprovam e adotam separadamente a política europeia de segurança comum"], "correct": "negoceiam, aprovam e adotam conjuntamente a legislação europeia" }
+{ "id": 80, "topic": "VII", "question": "O Conselho da União Europeia e o Parlamento Europeu…", "options": ["negoceiam, aprovam e adotam conjuntamente a legislação europeia", "negoceiam, aprovam e adotam separadamente, a política europeia", "adotam, aprovam ou rejeitam pareceres conjuntamente", "legislam, aprovam e adotam separadamente a política europeia de segurança comum"], "correct": "negoceiam, aprovam e adotam conjuntamente a legislação europeia" },
+{
+    "id": 81,
+    "topic": "I",
+    "question": "O que significa a palavra <u>redundante</u>?",
+    "options": ["Supérfluo", "Redondo", "Importante", "Redutor"],
+    "correct": "Supérfluo"
+  },
+  {
+    "id": 82,
+    "topic": "I",
+    "question": "O que significa a palavra <u>lenidade</u>?",
+    "options": ["Bravura", "Arte de trabalhar a lã", "Rugosidade", "Suavidade"],
+    "correct": "Suavidade"
+  },
+  {
+    "id": 83,
+    "topic": "I",
+    "question": "De entre as hipóteses apresentadas, indique o antónimo de <u>conciso</u>",
+    "options": ["Abreviado", "Lacónico", "Convincente", "Prolixo"],
+    "correct": "Prolixo"
+  },
+  {
+    "id": 84,
+    "topic": "I",
+    "question": "De entre as hipóteses apresentadas, indique o antónimo de <u>diligenciar</u>",
+    "options": ["Esforçar-se por", "Negligenciar", "Intentar", "Influenciar"],
+    "correct": "Negligenciar"
+  },
+  {
+    "id": 85,
+    "topic": "I",
+    "question": "Qual das frases seguintes tem a forma verbal adequada?",
+    "options": [
+      "Ontem a PSP efetuou cinco detenções na cidade de Torres Novas",
+      "A comunicação social, no proximo sábado, acompanhou uma equipa de Investigação Criminal da PSP",
+      "Na semana passada nós vamos depor à Esquadra",
+      "Ontem, elementos da PSP, abrirão um inquérito crime."
+    ],
+    "correct": "Ontem a PSP efetuou cinco detenções na cidade de Torres Novas"
+  },
+  {
+    "id": 86,
+    "topic": "I",
+    "question": "Qual das seguintes palavras contém erro na acentuação?",
+    "options": ["Miúdo", "Estávamos", "Veem-se", "Libertássem"],
+    "correct": "Libertássem"
+  },
+  {
+    "id": 87,
+    "topic": "I",
+    "question": "Indique por qual das orações é formada a seguinte frase “A noite está linda”",
+    "options": ["Oração Coordenada", "Oração Absoluta", "Oração Subordinada", "Oração Subordinante"],
+    "correct": "Oração Absoluta"
+  },
+  {
+    "id": 88,
+    "topic": "I",
+    "question": "“Ninguém” é:",
+    "options": ["pronome possessivo", "pronome demonstrativo", "pronome relativo", "pronome indefinido"],
+    "correct": "pronome indefinido"
+  },
+  {
+    "id": 89,
+    "topic": "I",
+    "question": "O verbo sublinhado em \"eu neste momento <u>bebia</u> um café\" encontra-se no:",
+    "options": ["Pretérito perfeito", "Pretérito imperfeito", "Futuro", "Presente"],
+    "correct": "Pretérito imperfeito"
+  },
+  {
+    "id": 90,
+    "topic": "I",
+    "question": "Indique qual a figura de estilo presente na seguinte frase: “Aquela triste e leda madrugada”",
+    "options": ["Comparação", "Metáfora", "Hipérbole", "Antítese"],
+    "correct": "Antítese"
+  }
 ]
