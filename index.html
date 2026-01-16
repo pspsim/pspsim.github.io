@@ -63,30 +63,22 @@ Caso encontrem alguma pergunta em que a resposta esteja errada, ou a mesma tenha
 <script>
 let testSubmitted = false;
 let testQuestions = [];
-
-// ===================== ARRAY DE PERGUNTAS =====================
-
-// ===================== FUNÇÃO PARA EMBARALHAR =====================
 let questionsData = [];
+let topics = {}; // 🔹 ÚNICO topics GLOBAL (importante)
 
+// ===================== CARREGAR JSON =====================
 fetch("questions.json")
   .then(response => response.json())
   .then(data => {
     questionsData = data;
-    inicializarTudo(); // chama função que cria o quiz
+    inicializarTudo(); // só arranca quando o JSON já chegou
   });
+
 // ===================== ELEMENTOS =====================
 const quizForm = document.getElementById("quizForm");
 const timerDiv = document.getElementById("timer");
 const submitBtn = document.getElementById("submit");
 const resultDiv = document.getElementById("result");
-
-// ===================== AGRUPAR POR TÓPICO =====================
-const topics = {};
-questionsData.forEach(q => {
-  if (!topics[q.topic]) topics[q.topic] = [];
-  topics[q.topic].push(q);
-});
 
 const topicNames = {
   "I": "Português até ao 12ºano",
@@ -109,15 +101,13 @@ function shuffleArray(arr) {
 
 // ===================== GERAR QUIZ =====================
 function generateQuiz() {
-  // Limpa quiz antigo
   quizForm.innerHTML = "";
   testQuestions = [];
   let questionCounter = 1;
 
   Object.keys(topics).forEach(topicKey => {
-    const topicQuestions = shuffleArray([...topics[topicKey]]); // copiar antes de embaralhar
+    const topicQuestions = shuffleArray([...topics[topicKey]]);
 
-    // Título do tópico
     const h2 = document.createElement("h2");
     h2.textContent = `Tópico ${topicKey} - ${topicNames[topicKey]}`;
     quizForm.appendChild(h2);
@@ -132,7 +122,7 @@ function generateQuiz() {
       questionCounter++;
       div.appendChild(p);
 
-      // Embaralhar opções mantendo "Todas as anteriores" no fim
+      // Embaralhar opções mantendo "Todas..." no fim
       let opts = [...q.options];
       let todasOption;
       const todasIndex = opts.findIndex(o => o.startsWith("Todas"));
@@ -182,6 +172,7 @@ function generateQuiz() {
 // ===================== TIMER =====================
 let time = 2 * 60 * 60; // 2 horas
 let timerInterval;
+
 function startTimer() {
   clearInterval(timerInterval);
   timerInterval = setInterval(() => {
@@ -189,6 +180,7 @@ function startTimer() {
     const m = String(Math.floor((time % 3600) / 60)).padStart(2, '0');
     const s = String(time % 60).padStart(2, '0');
     timerDiv.textContent = `${h}:${m}:${s}`;
+
     if (time <= 0) {
       clearInterval(timerInterval);
       submitTest();
@@ -203,7 +195,6 @@ function submitTest() {
   let scoreCount = 0;
 
   testQuestions.forEach(q => {
-    // Limpar feedback antigo
     q.questionDiv.querySelectorAll('.feedback').forEach(f => f.remove());
     q.questionDiv.style.border = "2px solid #ccc";
 
@@ -243,48 +234,44 @@ function submitTest() {
 
     q.questionDiv.appendChild(feedback);
 
-    // Bloquear inputs após submeter
     q.questionDiv.querySelectorAll("input[type=radio]").forEach(radio => {
       radio.disabled = true;
     });
   });
 
   const finalScore = (scoreCount / testQuestions.length) * 20;
+
   resultDiv.innerHTML = `
-  Acertaste ${scoreCount}/${testQuestions.length} perguntas.<br>
-  Nota final: <br>
-  <span style="font-size:2em"><strong>${finalScore.toFixed(2)}/20</strong></span>
-`;
-// Mostrar Apto / Não Apto
-const aptoDiv = document.createElement("div");
-aptoDiv.style.textAlign = "center";
-aptoDiv.style.marginTop = "10px";
-aptoDiv.style.fontSize = "60px"; // aumenta o tamanho
-aptoDiv.style.color = finalScore >= 10 ? "green" : "red";
-aptoDiv.textContent = finalScore >= 10 ? "APTO" : "NÃO APTO";
+    Acertaste ${scoreCount}/${testQuestions.length} perguntas.<br>
+    Nota final: <br>
+    <span style="font-size:2em"><strong>${finalScore.toFixed(2)}/20</strong></span>
+  `;
 
-// Remove antigo, se existir
-const oldApto = document.getElementById("aptoDiv");
-if (oldApto) oldApto.remove();
-aptoDiv.id = "aptoDiv";
+  const aptoDiv = document.createElement("div");
+  aptoDiv.style.textAlign = "center";
+  aptoDiv.style.marginTop = "10px";
+  aptoDiv.style.fontSize = "60px";
+  aptoDiv.style.color = finalScore >= 10 ? "green" : "red";
+  aptoDiv.textContent = finalScore >= 10 ? "APTO" : "NÃO APTO";
 
-resultDiv.appendChild(aptoDiv);
+  const oldApto = document.getElementById("aptoDiv");
+  if (oldApto) oldApto.remove();
+
+  aptoDiv.id = "aptoDiv";
+  resultDiv.appendChild(aptoDiv);
+
   testSubmitted = true;
   submitBtn.textContent = "Novo Teste";
 }
 
-// ===================== INICIALIZAR QUIZ =====================
+// ===================== INICIALIZAR TUDO (SÓ DEPOIS DO JSON) =====================
 function inicializarTudo() {
-  // ⬇️ TUDO o que já tens abaixo de questionsData fica aqui dentro ⬇️
+  topics = {}; // limpa e recria
 
-  // AGRUPAR POR TÓPICO
-  const topics = {};
   questionsData.forEach(q => {
     if (!topics[q.topic]) topics[q.topic] = [];
     topics[q.topic].push(q);
   });
-
-  // (… todo o teu resto do código igual …)
 
   generateQuiz();
   startTimer();
@@ -297,9 +284,8 @@ submitBtn.addEventListener("click", e => {
   if (!testSubmitted) {
     submitTest();
   } else {
-    // Repetir teste: regenera perguntas, embaralha, reinicia timer
     generateQuiz();
-    time = 2 * 60 * 60; // reset timer
+    time = 2 * 60 * 60;
     startTimer();
     testSubmitted = false;
     submitBtn.textContent = "Submeter Teste";
