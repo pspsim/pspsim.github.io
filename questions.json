@@ -595,5 +595,75 @@
     "question": "Indique qual a figura de estilo presente na seguinte frase: “Aquela triste e leda madrugada”",
     "options": ["Comparação", "Metáfora", "Hipérbole", "Antítese"],
     "correct": "Antítese"
+  },
+  {
+    "id": 91,
+    "topic": "I",
+    "question": "A palavra sublinhada na frase “encontrei o <u>seu</u> livro, Sr.Professor” é um pronome:",
+    "options": ["Demonstrativo", "Imperativo", "Indefinido", "Possessivo"],
+    "correct": "Possessivo"
+  },
+  {
+    "id": 92,
+    "topic": "I",
+    "question": "Indique a frase em que o seu adjetivo se encontra no Grau Superlativo Absoluto Analítico",
+    "options": ["O João é um aluno muito estudioso", "O João é um aluno estudioso", "O João é um aluno estudiosíssimo", "O João é um aluno tão estudioso como o Rui"],
+    "correct": "O João é um aluno muito estudioso"
+  },
+  {
+    "id": 93,
+    "topic": "I",
+    "question": "O adjetivo sublinhado na frase, \"O António é <u>altíssimo</u>\", está em que grau:",
+    "options": ["Superlativo absoluto sintético", "Superlativo absoluto analítico", "Superlativo relativo de superioridade", "Superlativo relativo de inferioridade"],
+    "correct": "Superlativo absoluto sintético"
+  },
+  {
+    "id": 94,
+    "topic": "I",
+    "question": "As palavras \"concelho\" e \"conselho\" são:",
+    "options": ["Palavras da mesma família", "Palavras homónimas", "Palavras homófonas", "Palavras sinónimas"],
+    "correct": "Palavras homófonas"
+  },
+  {
+    "id": 95,
+    "topic": "I",
+    "question": "”Quando” é:",
+    "options": ["Advérbio de lugar", "Advérbio de tempo", "Advérbio de modo", "Uma preposição"],
+    "correct": "Advérbio de tempo"
+  },
+  {
+    "id": 96,
+    "topic": "I",
+    "question": "Qual das seguintes palavras contém erro na acentuação?",
+    "options": ["Miúdo", "Estávamos", "Veem-se", "Libertássem"],
+    "correct": "Libertássem"
+  },
+  {
+    "id": 97,
+    "topic": "I",
+    "question": "Indique por qual das orações é formada a seguinte frase “A noite está linda”",
+    "options": ["Oração Coordenada", "Oração Absoluta", "Oração Subordinada", "Oração Subordinante"],
+    "correct": "Oração Absoluta"
+  },
+  {
+    "id": 98,
+    "topic": "I",
+    "question": "”Ninguém” é:",
+    "options": ["pronome possessivo", "pronome demonstrativo", "pronome relativo", "pronome indefinido"],
+    "correct": "pronome indefinido"
+  },
+  {
+    "id": 99,
+    "topic": "I",
+    "question": "Das frases seguintes, apenas uma se encontra no pretérito perfeito.",
+    "options": ["A Iva arrumou a casa toda", "O Rui via televisão enquanto a Rute brincava", "Eu serei um bom polícia", "Eu tinha muita vontade de ser polícia"],
+    "correct": "A Iva arrumou a casa toda"
+  },
+  {
+    "id": 100,
+    "topic": "I",
+    "question": "Selecione a opção em que a palavra \"alto\" é um advérbio",
+    "options": ["Há um ninho de águia no alto daquele monte", "As garças são conhecidas pelo seu pescoço alto", "O galo cantou alto e fez-se ouvir nas redondezas", "Esse ninho ficou num local muito alto e inacessível"],
+    "correct": "O galo cantou alto e fez-se ouvir nas redondezas"
   }
 ]
