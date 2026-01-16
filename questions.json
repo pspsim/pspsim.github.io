@@ -398,7 +398,7 @@
 { 
   "id": 37, 
   "topic": "II", 
-  "question": "Segundo o Instituto Nacional de Estatística, Portugal atingiu no passado mês de abril uma taxa de inflação de 7,2%, sendo este o valor mais alto em 29 anos. Essencialmente, podemos entender esta inflação como…", 
+  "question": "Segundo o Instituto Nacional de Estatística, Portugal atingiu a fevereiro de 2023, uma taxa de inflação nos alimentos não transformados de 20.1%, sendo este o valor mais alto em tempos recentes. Essencialmente, podemos entender esta inflação como…", 
   "options": [
     "um aumento geral dos preços dos bens e serviços", 
     "uma diminuição geral dos preços dos bens e serviços", 
@@ -538,14 +538,14 @@
   {
     "id": 83,
     "topic": "I",
-    "question": "De entre as hipóteses apresentadas, indique o antónimo de <u>conciso</u>",
+    "question": "De entre as hipóteses apresentadas, indique o antónimo de <u><b>conciso</b></u>",
     "options": ["Abreviado", "Lacónico", "Convincente", "Prolixo"],
     "correct": "Prolixo"
   },
   {
     "id": 84,
     "topic": "I",
-    "question": "De entre as hipóteses apresentadas, indique o antónimo de <u>diligenciar</u>",
+    "question": "De entre as hipóteses apresentadas, indique o antónimo de <u><b>diligenciar</b></u>",
     "options": ["Esforçar-se por", "Negligenciar", "Intentar", "Influenciar"],
     "correct": "Negligenciar"
   },
@@ -613,7 +613,7 @@
   {
     "id": 93,
     "topic": "I",
-    "question": "O adjetivo sublinhado na frase, \"O António é <u>altíssimo</u>\", está em que grau:",
+    "question": "O adjetivo sublinhado na frase, \"O António é <u><b>altíssimo</b></u>\", está em que grau:",
     "options": ["Superlativo absoluto sintético", "Superlativo absoluto analítico", "Superlativo relativo de superioridade", "Superlativo relativo de inferioridade"],
     "correct": "Superlativo absoluto sintético"
   },
