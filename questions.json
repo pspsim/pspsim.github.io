@@ -1000,5 +1000,115 @@
       "5 Anos e termina com a eleição do novo Presidente"
     ],
     "correct": "5 Anos e termina com a posse do novo Presidente"
+  },
+  {
+    "id": 131,
+    "topic": "III",
+    "question": "Os tribunais são os órgãos de soberania com competência para:",
+    "options": [
+      "Administrar a verdade em nome do povo",
+      "Administrar a verdade em nome do Governo",
+      "Administrar a justiça em nome do povo",
+      "Administrar a justiça em nome do Governo"
+    ],
+    "correct": "Administrar a justiça em nome do povo"
+  },
+  {
+    "id": 132,
+    "topic": "III",
+    "question": "Além do Tribunal Constitucional, existem as seguintes categorias de tribunais:",
+    "options": [
+      "O Supremo Tribunal de Justiça e os tribunais judiciais de primeira e de segunda instância",
+      "O Supremo Tribunal Administrativo e os demais tribunais administrativos e fiscais",
+      "O Tribunal de Contas",
+      "Todas as opções estão corretas"
+    ],
+    "correct": "Todas as opções estão corretas"
+  },
+  {
+    "id": 133,
+    "topic": "IV",
+    "question": "Todos os indivíduos têm direito:",
+    "options": [
+      "Ao reconhecimento junto da sua Comunidade da sua personalidade jurídica",
+      "Ao reconhecimento por parte do Governo da sua personalidade jurídica",
+      "Ao reconhecimento em todos os lugares da sua personalidade jurídica",
+      "Ao reconhecimento perante os Tribunais da sua personalidade jurídica"
+    ],
+    "correct": "Ao reconhecimento em todos os lugares da sua personalidade jurídica"
+  },
+  {
+    "id": 134,
+    "topic": "IV",
+    "question": "Ninguém pode ser arbitrariamente:",
+    "options": ["Preso", "Detido", "Exilado", "Todas as opções estão corretas"],
+    "correct": "Todas as opções estão corretas"
+  },
+  {
+    "id": 135,
+    "topic": "IV",
+    "question": "Toda a pessoa tem o direito de:",
+    "options": [
+      "Livremente circular e escolher a sua residência no interior de um Estado",
+      "Livremente circular e escolher a sua residência em qualquer local",
+      "Circular com a condicionante imposta por cada Estado e aí escolher a sua residência",
+      "Com exceção dos criminosos, livremente circular e escolher a sua residência no interior de um Estado"
+    ],
+    "correct": "Livremente circular e escolher a sua residência no interior de um Estado"
+  },
+  {
+    "id": 136,
+    "topic": "IV",
+    "question": "Toda a pessoa, individual ou coletivamente:",
+    "options": ["Tem direito ao respeito", "Tem direito a uma casa", "Tem direito à propriedade", "Tem direito de pronúncia"],
+    "correct": "Tem direito à propriedade"
+  },
+  {
+    "id": 137,
+    "topic": "IV",
+    "question": "Segundo o artigo 30.° da DUDH:",
+    "options": [
+      "Nenhuma disposição da presente Declaração pode ser interpretada de maneira a envolver para qualquer Estado, agrupamento ou indivíduo o direito de se entregar a alguma atividade ou de praticar algum ato destinado a destruir os direitos e liberdades aqui enunciados",
+      "Com exceção das disposições inerentes ao direito à vida, à liberdade e à segurança pessoal, nenhuma outra disposição da Declaração pode ser interpretada de maneira a envolver para qualquer Estado, agrupamento ou indivíduo o direito de se entregar a alguma atividade ou de praticar algum ato destinado a destruir os direitos e liberdades aqui enunciados",
+      "Qualquer disposição da presente Declaração deve ser interpretada de maneira a envolver para qualquer Estado, agrupamento ou indivíduo o direito de se entregar a alguma atividade ou de praticar algum ato destinado a destruir os direitos e liberdades aqui enunciados",
+      "Apenas algumas disposições da presente Declaração podem ser interpretadas de maneira a envolver para qualquer Estado, agrupamento ou indivíduo o direito de se entregar a alguma atividade ou de praticar algum ato destinado a destruir os direitos e liberdades aqui enunciados"
+    ],
+    "correct": "Nenhuma disposição da presente Declaração pode ser interpretada de maneira a envolver para qualquer Estado, agrupamento ou indivíduo o direito de se entregar a alguma atividade ou de praticar algum ato destinado a destruir os direitos e liberdades aqui enunciados"
+  },
+  {
+    "id": 138,
+    "topic": "V",
+    "question": "Segundo a Lei n.° 53/2007, de 31 de agosto, a Polícia de Segurança de Segurança Pública (PSP) define-se como...",
+    "options": [
+      "um corpo superior de polícia criminal organizado hierarquicamente, dotado de autonomia administrativa",
+      "um corpo superior de polícia criminal organizado hierarquicamente, não dotado de autonomia administrativa",
+      "uma força de segurança de natureza militar, constituída por militares organizados num corpo especial de tropas e dotada de autonomia administrativa",
+      "uma força de segurança, uniformizada e armada, com natureza de serviço público e dotada de autonomia administrativa"
+    ],
+    "correct": "uma força de segurança, uniformizada e armada, com natureza de serviço público e dotada de autonomia administrativa"
+  },
+  {
+    "id": 139,
+    "topic": "V",
+    "question": "Nos termos do artigo 9.° da Lei Orgânica da PSP (Lei n.° 53/2017, de 31 de agosto), considera-se uma força pública...",
+    "options": [
+      "o efetivo minimo de um agente em missão de serviço",
+      "o efetivo mínimo de um agente, mesmo fora de serviço",
+      "o efetivo mínimo de dois agentes em missão de serviço",
+      "o efetivo mínimo de dois agentes, mesmo fora de serviço"
+    ],
+    "correct": "o efetivo mínimo de dois agentes em missão de serviço"
+  },
+  {
+    "id": 140,
+    "topic": "V",
+    "question": "As subunidades dos comandos territoriais de Polícia da PSP são:",
+    "options": [
+      "O comando, a divisão policial e a esquadra",
+      "A divisão policial e a esquadra",
+      "O destacamento e a esquadra",
+      "A esquadra e o posto"
+    ],
+    "correct": "A divisão policial e a esquadra"
   }
 ]
