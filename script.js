@@ -155,31 +155,30 @@ function submitTest(resultDiv, quizForm, timerDiv, submitBtn){
 
     const selected = document.querySelector(`input[name="${q.inputName}"]:checked`);
 
-    if(selected){
-      const userIndex = parseInt(selected.value);
-      const userAnswerText = q.optionsRendered[userIndex];
+    if (selected) {
+  const userIndex = parseInt(selected.value);
+  const userAnswerText = q.optionsRendered[userIndex];
 
-      if(userAnswerText === q.correct){
-        scoreCount++;
-        q.questionDiv.style.border = "2px solid green";
-        feedback.style.color = "green";
-        feedback.textContent = "✅ Resposta correta";
-      } else {
-        q.questionDiv.style.border = "2px solid red";
-        feedback.style.color = "red";
-        feedback.innerHTML = `❌ Resposta errada<br>
-        A tua resposta:  ${String.fromCharCode(65+userIndex)}) ${userAnswerText}<br>
-        Resposta correta: ${String.fromCharCode(65+userIndex)}) ${q.correct}`;
-      }
-    } else {
-      q.questionDiv.style.border = "2px solid orange";
-      feedback.style.color = "orange";
-      // Encontrar o índice da resposta correta
-const correctIndex = q.optionsRendered.findIndex(opt => opt === q.correct);
-      feedback.innerHTML = `⚠️ Pergunta não respondida<br>
-      Resposta correta: ${String.fromCharCode(65+correctIndex)}) ${q.correct}`;
-      }
-    }
+  if (userAnswerText === q.correct) {
+    scoreCount++;
+    q.questionDiv.style.border = "2px solid green";
+    feedback.style.color = "green";
+    feedback.textContent = "✅ Resposta correta";
+  } else {
+    q.questionDiv.style.border = "2px solid red";
+    feedback.style.color = "red";
+    feedback.innerHTML = `❌ Resposta errada<br>
+      A tua resposta: ${String.fromCharCode(65+userIndex)}) ${userAnswerText}<br>
+      Resposta correta: ${String.fromCharCode(65+q.optionsRendered.findIndex(opt => opt === q.correct))}) ${q.correct}`;
+  }
+
+} else {
+  q.questionDiv.style.border = "2px solid orange";
+  feedback.style.color = "orange";
+  const correctIndex = q.optionsRendered.findIndex(opt => opt === q.correct);
+  feedback.innerHTML = `⚠️ Pergunta não respondida<br>
+    Resposta correta: ${String.fromCharCode(65+correctIndex)}) ${q.correct}`;
+}
 
     q.questionDiv.appendChild(feedback);
 
