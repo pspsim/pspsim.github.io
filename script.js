@@ -6,7 +6,7 @@ let questionsData = [];
 
 // ===================== CARREGAR JSON =====================
 fetch("questions.json")
-  .then(response => response.json())
+  .then(res => res.json())
   .then(data => {
     questionsData = data;
     inicializarTudo();
@@ -160,13 +160,14 @@ function submitTest(resultDiv, quizForm, timerDiv, submitBtn) {
       const userIndex = parseInt(selected.value);
       const userAnswerText = q.optionsRendered[userIndex];
 
-      if (userAnswerText === q.correct) {
+      // ✅ Resposta correta
+      if (userAnswerText.trim() === q.correct.trim()) {
         scoreCount++;
         q.questionDiv.style.border = "2px solid green";
         feedback.style.color = "green";
         feedback.textContent = "✅ Resposta correta";
       } else {
-        const correctIndex = q.optionsRendered.findIndex(opt => opt === q.correct);
+        const correctIndex = q.optionsRendered.findIndex(opt => opt.trim() === q.correct.trim());
         q.questionDiv.style.border = "2px solid red";
         feedback.style.color = "red";
         feedback.innerHTML = `❌ Resposta errada<br>
@@ -174,7 +175,7 @@ function submitTest(resultDiv, quizForm, timerDiv, submitBtn) {
           Resposta correta: ${String.fromCharCode(65 + correctIndex)}) ${q.correct}`;
       }
     } else {
-      const correctIndex = q.optionsRendered.findIndex(opt => opt === q.correct);
+      const correctIndex = q.optionsRendered.findIndex(opt => opt.trim() === q.correct.trim());
       q.questionDiv.style.border = "2px solid orange";
       feedback.style.color = "orange";
       feedback.innerHTML = `⚠️ Pergunta não respondida<br>
