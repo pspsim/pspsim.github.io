@@ -174,8 +174,10 @@ function submitTest(resultDiv, quizForm, timerDiv, submitBtn){
     } else {
       q.questionDiv.style.border = "2px solid orange";
       feedback.style.color = "orange";
+      // Encontrar o índice da resposta correta
+const correctIndex = q.optionsRendered.findIndex(opt => opt === q.correct);
       feedback.innerHTML = `⚠️ Pergunta não respondida<br>
-      Resposta correta: ${String.fromCharCode(65+userIndex)}) ${q.correct}`;
+      Resposta correta: ${String.fromCharCode(65+correctIndex)}) ${q.correct}`;
       }
     }
 
