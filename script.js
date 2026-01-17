@@ -15,8 +15,8 @@ fetch("questions.json")
 
 // ===================== FUNÇÕES AUXILIARES =====================
 function shuffleArray(arr) {
-  for (let i = arr.length -1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i+1));
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
   return arr;
@@ -80,10 +80,11 @@ function generateQuiz(topics, topicNames, quizForm) {
       questionCounter++;
       div.appendChild(p);
 
+      // Ordenar opções e colocar “Todas” no final
       let opts = [...q.options];
       let todasOption;
       const todasIndex = opts.findIndex(o => o.startsWith("Todas"));
-      if (todasIndex !== -1) todasOption = opts.splice(todasIndex,1)[0];
+      if (todasIndex !== -1) todasOption = opts.splice(todasIndex, 1)[0];
       opts = shuffleArray(opts);
       if (todasOption) opts.push(todasOption);
 
@@ -101,11 +102,11 @@ function generateQuiz(topics, topicNames, quizForm) {
         input.value = i;
         input.style.margin = "0 5px";
 
-        label.appendChild(letra);
-        label.appendChild(input);
-
         const texto = document.createElement("span");
         texto.textContent = opt;
+
+        label.appendChild(letra);
+        label.appendChild(input);
         label.appendChild(texto);
 
         div.appendChild(label);
@@ -127,11 +128,11 @@ function generateQuiz(topics, topicNames, quizForm) {
 function startTimer(timerDiv) {
   clearInterval(timerInterval);
   timerInterval = setInterval(() => {
-    const h = String(Math.floor(time/3600)).padStart(2,'0');
-    const m = String(Math.floor((time %3600)/60)).padStart(2,'0');
-    const s = String(time %60).padStart(2,'0');
+    const h = String(Math.floor(time / 3600)).padStart(2, '0');
+    const m = String(Math.floor((time % 3600) / 60)).padStart(2, '0');
+    const s = String(time % 60).padStart(2, '0');
     timerDiv.textContent = `${h}:${m}:${s}`;
-    if(time<=0){
+    if (time <= 0) {
       clearInterval(timerInterval);
       document.getElementById("submit").click();
     }
@@ -140,12 +141,12 @@ function startTimer(timerDiv) {
 }
 
 // ===================== SUBMETER =====================
-function submitTest(resultDiv, quizForm, timerDiv, submitBtn){
+function submitTest(resultDiv, quizForm, timerDiv, submitBtn) {
   clearInterval(timerInterval);
   let scoreCount = 0;
 
   testQuestions.forEach(q => {
-    q.questionDiv.querySelectorAll(".feedback").forEach(f=>f.remove());
+    q.questionDiv.querySelectorAll(".feedback").forEach(f => f.remove());
     q.questionDiv.style.border = "2px solid #ccc";
 
     const feedback = document.createElement("div");
@@ -156,36 +157,35 @@ function submitTest(resultDiv, quizForm, timerDiv, submitBtn){
     const selected = document.querySelector(`input[name="${q.inputName}"]:checked`);
 
     if (selected) {
-  const userIndex = parseInt(selected.value);
-  const userAnswerText = q.optionsRendered[userIndex];
+      const userIndex = parseInt(selected.value);
+      const userAnswerText = q.optionsRendered[userIndex];
 
-  if (userAnswerText === q.correct) {
-    scoreCount++;
-    q.questionDiv.style.border = "2px solid green";
-    feedback.style.color = "green";
-    feedback.textContent = "✅ Resposta correta";
-  } else {
-    q.questionDiv.style.border = "2px solid red";
-    feedback.style.color = "red";
-    feedback.innerHTML = `❌ Resposta errada<br>
-      A tua resposta: ${String.fromCharCode(65+userIndex)}) ${userAnswerText}<br>
-      Resposta correta: ${String.fromCharCode(65+q.optionsRendered.findIndex(opt => opt === q.correct))}) ${q.correct}`;
-  }
-
-} else {
-  q.questionDiv.style.border = "2px solid orange";
-  feedback.style.color = "orange";
-  const correctIndex = q.optionsRendered.findIndex(opt => opt === q.correct);
-  feedback.innerHTML = `⚠️ Pergunta não respondida<br>
-    Resposta correta: ${String.fromCharCode(65+correctIndex)}) ${q.correct}`;
-}
+      if (userAnswerText === q.correct) {
+        scoreCount++;
+        q.questionDiv.style.border = "2px solid green";
+        feedback.style.color = "green";
+        feedback.textContent = "✅ Resposta correta";
+      } else {
+        const correctIndex = q.optionsRendered.findIndex(opt => opt === q.correct);
+        q.questionDiv.style.border = "2px solid red";
+        feedback.style.color = "red";
+        feedback.innerHTML = `❌ Resposta errada<br>
+          A tua resposta: ${String.fromCharCode(65 + userIndex)}) ${userAnswerText}<br>
+          Resposta correta: ${String.fromCharCode(65 + correctIndex)}) ${q.correct}`;
+      }
+    } else {
+      const correctIndex = q.optionsRendered.findIndex(opt => opt === q.correct);
+      q.questionDiv.style.border = "2px solid orange";
+      feedback.style.color = "orange";
+      feedback.innerHTML = `⚠️ Pergunta não respondida<br>
+        Resposta correta: ${String.fromCharCode(65 + correctIndex)}) ${q.correct}`;
+    }
 
     q.questionDiv.appendChild(feedback);
-
-    q.questionDiv.querySelectorAll("input[type=radio]").forEach(radio=>radio.disabled=true);
+    q.questionDiv.querySelectorAll("input[type=radio]").forEach(radio => radio.disabled = true);
   });
 
-  const finalScore = (scoreCount / testQuestions.length)*20;
+  const finalScore = (scoreCount / testQuestions.length) * 20;
   resultDiv.innerHTML = `Acertaste ${scoreCount}/${testQuestions.length} perguntas.<br>
     Nota final: <span style="font-size:2em"><strong>${finalScore.toFixed(2)}/20</strong></span>`;
 
@@ -194,8 +194,8 @@ function submitTest(resultDiv, quizForm, timerDiv, submitBtn){
   aptoDiv.style.textAlign = "center";
   aptoDiv.style.marginTop = "10px";
   aptoDiv.style.fontSize = "60px";
-  aptoDiv.style.color = finalScore>=12 ? "green":"red";
-  aptoDiv.textContent = finalScore>=12 ? "APTO":"NÃO APTO";
+  aptoDiv.style.color = finalScore >= 12 ? "green" : "red";
+  aptoDiv.textContent = finalScore >= 12 ? "APTO" : "NÃO APTO";
   resultDiv.appendChild(aptoDiv);
 
   testSubmitted = true;
@@ -203,10 +203,10 @@ function submitTest(resultDiv, quizForm, timerDiv, submitBtn){
 }
 
 // ===================== RESET =====================
-function resetTest(resultDiv, quizForm, timerDiv, submitBtn, topics, topicNames){
+function resetTest(resultDiv, quizForm, timerDiv, submitBtn, topics, topicNames) {
   resultDiv.textContent = "";
   generateQuiz(topics, topicNames, quizForm);
-  time = 2*60*60;
+  time = 2 * 60 * 60;
   startTimer(timerDiv);
   testSubmitted = false;
   submitBtn.textContent = "Submeter Teste";
