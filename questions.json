@@ -785,5 +785,125 @@
       "Organização das Nações Unidas"
     ],
     "correct": "Organização Mundial de Saúde"
+  },
+  {
+    "id": 111,
+    "topic": "II",
+    "question": "Quem é o atual Sumo Pontífice?",
+    "options": [
+      "Bento XIV",
+      "João Paulo II",
+      "Leão XIV",
+      "Paulo VI"
+    ],
+    "correct": "Leão XIV"
+  },
+  {
+    "id": 112,
+    "topic": "II",
+    "question": "Lisboa recebeu, em novembro de 2025, uma das maiores feiras de tecnologia e inovação. Trata-se da:",
+    "options": [
+      "Internet World Congress",
+      "Mobile World Congress",
+      "Web Summit",
+      "Internet Summit Expo"
+    ],
+    "correct": "Web Summit"
+  },
+  {
+    "id": 113,
+    "topic": "II",
+    "question": "Qual é o nome atual do Ministro da Administração Interna do Governo Português?",
+    "options": [
+      "Miguel Macedo",
+      "Constança Urbano de Sousa",
+      "Azeredo Lopes",
+      "Maria Lúcia da Conceição Abrantes"
+    ],
+    "correct": "Maria Lúcia da Conceição Abrantes"
+  },
+  {
+    "id": 114,
+    "topic": "II",
+    "question": "O atual Ministro das Finanças é:",
+    "options": [
+      "Vitor Gaspar",
+      "Joaquim Miranda Sarmento",
+      "Maria Luís Albuquerque",
+      "António Bagão Félix"
+    ],
+    "correct": "Joaquim Miranda Sarmento"
+  },
+  {
+    "id": 115,
+    "topic": "II",
+    "question": "O nome completo do atual Papa Leão XIV é:",
+    "options": [
+      "Robert Francis Prevost",
+      "Francis Prevost",
+      "Charles Francis Prevost",
+      "John Prevost"
+    ],
+    "correct": "Robert Francis Prevost"
+  },
+  {
+    "id": 116,
+    "topic": "II",
+    "question": "Qual dos seguintes países faz fronteira com a Áustria?",
+    "options": [
+      "Polónia",
+      "França",
+      "Itália",
+      "Croácia"
+    ],
+    "correct": "Itália"
+  },
+  {
+    "id": 117,
+    "topic": "II",
+    "question": "Sergei Skripal, ex-oficial de inteligência militar russo, alegado agente duplo para os serviços de inteligência britânicos, foi, em 2018:",
+    "options": [
+      "Detido pela Sluzhba Vneshney Razvedki (SVR) e condenado a 30 anos de prisão pelo Supremo Tribunal de Justiça Russo",
+      "Nomeado Cavaleiro-Grã-Cruz pela Rainha de Inglaterra",
+      "Autor de um livro best seller, com repercussão internacional, intitulado de \"A Toupeira\"",
+      "Assassinado por envenenamento"
+    ],
+    "correct": "Assassinado por envenenamento"
+  },
+  {
+    "id": 118,
+    "topic": "II",
+    "question": "A Frontex, criada em outubro de 2004, tem como missão, entre outras:",
+    "options": [
+      "Garantir a segurança das fronteiras externas europeias",
+      "Promover a investigação da criminalidade global",
+      "Garantir a segurança das fronteiras externas globais",
+      "Fiscalizar e punir a atividade dos serviços de fronteiras nacionais"
+    ],
+    "correct": "Garantir a segurança das fronteiras externas europeias"
+  },
+  {
+    "id": 119,
+    "topic": "II",
+    "question": "O novo Coronavirus, designado SARS-CoV-2 identificado pela primeira vez em dezembro de 2019, na China, na cidade de Wuhan, tem como sintomas mais comuns:",
+    "options": [
+      "Febre, tosse, dor de garganta, manchas dermatológicas, dores musculares, entre outras",
+      "Febre, tosse, dor de garganta, cansaço, dores musculares, entre outros",
+      "Febre, tosse, dor de garganta, queda capilar, dores musculares, entre outras",
+      "Todas as opções estão incorretas. O SARS-CoV-2 é um vírus totalmente assintomático"
+    ],
+    "correct": "Febre, tosse, dor de garganta, cansaço, dores musculares, entre outros"
+  },
+  {
+    "id": 120,
+    "topic": "II",
+    "question": "O Ministério Público é um órgão…",
+    "options": [
+      "judicial",
+      "governamental",
+      "religioso",
+      "colegial"
+    ],
+    "correct": "judicial"
   }
 ]
