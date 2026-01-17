@@ -163,18 +163,20 @@ function submitTest(resultDiv, quizForm, timerDiv, submitBtn){
         scoreCount++;
         q.questionDiv.style.border = "2px solid green";
         feedback.style.color = "green";
-        feedback.textContent = "✔ Resposta correta";
+        feedback.textContent = "✅ Resposta correta";
       } else {
         q.questionDiv.style.border = "2px solid red";
         feedback.style.color = "red";
-        feedback.innerHTML = `✘ Resposta errada<br>
-        A tua resposta: O ${String.fromCharCode(65+userIndex)}) ${userAnswerText}<br>
-        Resposta correta: ${q.correct}`;
+        feedback.innerHTML = `❌ Resposta errada<br>
+        A tua resposta:  ${String.fromCharCode(65+userIndex)}) ${userAnswerText}<br>
+        Resposta correta: ${String.fromCharCode(65+userIndex)}) ${q.correct}`;
       }
     } else {
       q.questionDiv.style.border = "2px solid orange";
       feedback.style.color = "orange";
-      feedback.innerHTML = `⚠ Pergunta não respondida<br>Resposta correta: ${q.correct}`;
+      feedback.innerHTML = `⚠️ Pergunta não respondida<br>
+      Resposta correta: ${String.fromCharCode(65+userIndex)}) ${q.correct}`;
+      }
     }
 
     q.questionDiv.appendChild(feedback);
