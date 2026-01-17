@@ -1230,5 +1230,125 @@
       "Alemanha, Bélgica, Luxemburgo, Países Baixos, Itália e Suíça"
     ],
     "correct": "Alemanha, Bélgica, França, Itália, Luxemburgo e Países Baixos"
+  },
+  {
+    "id": 151,
+    "topic": "V",
+    "question": "Os elementos da PSP com funções policiais são considerados agentes da força pública e de autoridade quando lhes não deva ser atribuído qualidade superior. São consideradas autoridades de policia:",
+    "options": [
+      "O comandante-geral, o 2.° comandante-geral, o inspetor nacional, os comandantes dos Comandos Operacionais da PSP, outros oficiais da PSP, quando no exercicio de funções de comando ou chefia operacional",
+      "O diretor nacional, os diretores nacionais adjuntos, o inspetor nacional, o comandante da Unidade Especial de Policia, os comandantes das unidades e subunidades até ao nível de esquadra, todos os oficiais da PSP",
+      "O diretor nacional, os diretores nacionais adjuntos, o inspetor nacional, o comandante da Unidade Especial de Polícia, os comandantes das unidades e subunidades até ao nível de esquadra, outros oficiais da PSP, quando no exercício de funções de comando ou chefia operacional",
+      "O comandante-geral, o 2º comandante-geral, o inspetor nacional, o comandante da Unidade Especial de Polícia, os comandantes das unidades e subunidades até ao nível de esquadra, todos os oficiais da PSP no exercício de funções de comando ou chefia operacional"
+    ],
+    "correct": "O diretor nacional, os diretores nacionais adjuntos, o inspetor nacional, o comandante da Unidade Especial de Polícia, os comandantes das unidades e subunidades até ao nível de esquadra, outros oficiais da PSP, quando no exercício de funções de comando ou chefia operacional"
+  },
+  {
+    "id": 152,
+    "topic": "V",
+    "question": "A Lei n.° 53/2007 de 31 de Agosto aprova a orgânica da Polícia de Segurança Pública e define órgãos de polícia criminal como:",
+    "options": [
+      "Os Oficiais e Chefes da PSP com funções policiais incumbidos de realizar quaisquer atos ordenados por autoridade judiciária ou determinados pelo Código de Processo Penal",
+      "Todos os elementos da PSP com funções policiais incumbidos de realizar quaisquer atos ordenados por autoridade judiciária ou determinados pelo Código de Processo Penal",
+      "Todos os elementos da PSP com funções policiais incumbidos de realizar quaisquer atos ordena-mdos por autoridade judiciária ou determinados pelo Código de Processo Administrativo",
+      "Todos os elementos da PSP com funções policiais e com o curso de investigação criminal, incumbidos de realizar quaisquer atos ordenados por autoridade judiciária ou determinados pelo Código de Processo Administrativo"
+    ],
+    "correct": "Todos os elementos da PSP com funções policiais incumbidos de realizar quaisquer atos ordenados por autoridade judiciária ou determinados pelo Código de Processo Penal"
+  },
+  {
+    "id": 153,
+    "topic": "V",
+    "question": "A Direção Nacional compreende:",
+    "options": [
+      "O Comandante-geral, o 2.º Comandante-geral, o Comando Operacional, o Comando da Administração dos Recursos Internos e o Comando da Doutrina e Formação, a Inspeção e as unidades orgânicas de operações e segurança, de recursos humanos e de logística e finanças",
+      "O diretor nacional, os diretores nacionais adjuntos, o Conselho Superior de Polícia, o Conselho de Deontologia e Disciplina e a Junta Superior de Saúde, a Inspeção e as unidades orgânicas de operações e segurança, de recursos humanos e de logística e finanças",
+      "O diretor nacional, os diretores nacionais adjuntos, o Conselho Superior de Polícia, o Conselho de Deontologia e Disciplina e a Junta Superior de Saúde, a Inspeção Geral da Administração Interna",
+      "O diretor nacional, os diretores nacionais adjuntos, o Conselho Superior de Policia, o Comando Operacional, o Comando da Administração dos Recursos Internos e a Inspeção Geral da Administração Interna."
+    ],
+    "correct": "O diretor nacional, os diretores nacionais adjuntos, o Conselho Superior de Polícia, o Conselho de Deontologia e Disciplina e a Junta Superior de Saúde, a Inspeção e as unidades orgânicas de operações e segurança, de recursos humanos e de logística e finanças"
+  },
+  {
+    "id": 154,
+    "topic": "VI",
+    "question": "Em conformidade com o Estatuto da PSP em vigência, recai sobre o pessoal com funções policais da PSP o dever de disponibilidade, o que implica…",
+    "options": [
+      "os polícias devem manter permanentemente disponibilidade para o serviço, ainda que com sacrifício dos interesses pessoais",
+      "os polícias devem manter permanentemente disponibilidade para o serviço, desde que não implique sacrifício dos interesses pessoais",
+      "os polícias devem cumprir unicamente o horário de serviço para o qual se encontram devidamente escalados",
+      "Todas as opções estão incorretas"
+    ],
+    "correct": "os polícias devem manter permanentemente disponibilidade para o serviço, ainda que com sacrifício dos interesses pessoais"
+  },
+  {
+    "id": 155,
+    "topic": "VI",
+    "question": "Os polícias exercem as suas funções devidamente uniformizados e armados. Para o exercício de funções operacionais ou de apoio:",
+    "options": [
+      "Que pela sua natureza e especificidade assim o exijam, nunca pode ser dispensado o uso de uniforme ou armamento",
+      "Que pela sua natureza e especificidade assim o exijam, pode ser dispensado o uso de uniforme ou armamento, nas condições fixadas por despacho do diretor nacional",
+      "Que pela sua natureza e especificidade assim o exijam, pode ser dispensado o uso de uniforme ou armamento, nas condições fixadas por despacho do Ministro da Administração Interna",
+      "Que pela sua natureza e especificidade assim o exijam, pode ser dispensado o uso de uniforme ou armamento, nas condições fixadas por despacho do Comandante direto"
+    ],
+    "correct": "Que pela sua natureza e especificidade assim o exijam, pode ser dispensado o uso de uniforme ou armamento, nas condições fixadas por despacho do diretor nacional"
+  },
+  {
+    "id": 156,
+    "topic": "VI",
+    "question": "O direito a férias é irrenunciável e o seu gozo efetivo não pode ser substituído por qualquer compensação económica, ainda que com o acordo do interessado. No ano civil de ingresso, os polícias:",
+    "options": [
+      "Têm direito a dois dias e meio de férias por cada um dos meses completos de serviço efetivo prestado até 31 de dezembro desse ano",
+      "Podem gozar as suas férias, após três meses completos de efetividade de serviço",
+      "Têm direito a dois dias úteis de férias por cada um dos meses completos de serviço efetivo prestado até 31 de dezembro desse ano",
+      "Podem gozar as suas férias, após doze meses completos de efetividade de serviço"
+    ],
+    "correct": "Têm direito a dois dias úteis de férias por cada um dos meses completos de serviço efetivo prestado até 31 de dezembro desse ano"
+  },
+  {
+    "id": 157,
+    "topic": "VI",
+    "question": "A ausência, quando previsível, é comunicada por escrito ao superior hierárquico competente, acompanhada da indicação do motivo justificativo, com a antecedência mínima de cinco dias úteis. Esta afirmação é:",
+    "options": [
+      "Falsa. Os polícias podem faltar quatro dias por mês por conta do período de férias, até ao máximo de 15 dias por ano",
+      "Verdadeira. Os polícias podem faltar dois dias por mês por conta do período de férias, até ao máximo de 13 dias por ano.",
+      "Falsa. As faltas por conta do período de férias são obrigatoriamente comunicadas com a antecedência mínima de 24 horas e estão sujeitas a autorização, que pode ser recusada se forem suscetíveis de causar prejuízo para o normal funcionamento do serviço, por decisão devidamente fundamentada",
+      "Verdadeira. As faltas por conta do período de férias são obrigatoriamente comunicadas com a antecedência mínima de 24 horas e não estão sujeitas a autorização"
+    ],
+    "correct": "Verdadeira. Os polícias podem faltar dois dias por mês por conta do período de férias, até ao máximo de 13 dias por ano."
+  },
+  {
+    "id": 158,
+    "topic": "VII",
+    "question": "O Conselho delibera...",
+    "options": [
+      "por maioria qualificada, salvo disposição em contrário dos Tratados",
+      "por maioria simples, salvo disposição em contrário dos Tratados",
+      "por unanimidade, salvo disposição em contrário dos Tratados",
+      "pelo método do voto secreto"
+    ],
+    "correct": "por maioria qualificada, salvo disposição em contrário dos Tratados"
+  },
+  {
+    "id": 159,
+    "topic": "VII",
+    "question": "O Parlamento Europeu (PE)...",
+    "options": [
+      "exerce conjuntamente com o Conselho e a Comissão a função legislativa",
+      "é a única Instituição legislativa da União",
+      "é uma Instituição dotada de atribuições essencialmente executivas",
+      "é uma Instituição criada para exercer o direito de iniciativa legislativa"
+    ],
+    "correct": "exerce conjuntamente com o Conselho e a Comissão a função legislativa"
+  },
+  {
+    "id": 160,
+    "topic": "VII",
+    "question": "O Conselho Europeu...",
+    "options": [
+      "desde sempre foi uma Instituição da União Europeia",
+      "é uma Instituição da União Europeia depois do Tratado de Maastricht",
+      "com o tratado de Lisboa passou a ser uma Instituição da União Europeia",
+      "é uma Agência Europeia"
+    ],
+    "correct": "com o tratado de Lisboa passou a ser uma Instituição da União Europeia"
   }
 ]
