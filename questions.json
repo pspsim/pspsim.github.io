@@ -905,5 +905,100 @@
       "colegial"
     ],
     "correct": "judicial"
+  },
+  {
+    "id": 121,
+    "topic": "II",
+    "question": "A 31 de janeiro do 2020, o Reino Unido deixou de ser um Estado-Membro da União Europeia, entrando em vigor o Acordo de Saída. Esta “saída” é também designada de:",
+    "options": ["Brexif", "Brexout", "Brexit", "Ukout!"],
+    "correct": "Brexit"
+  },
+  {
+    "id": 122,
+    "topic": "II",
+    "question": "No âmbito da cibersegurança, o phishing é:",
+    "options": [
+      "O pacote de informação enviado de um servidor web para um programa de navegação, e depois reenviado sempre que este aceda ao servidor",
+      "O programa que introduzir no sistema, geralmente de forma incorreta, com a intenção de comprometer a confidencialidade, a integridade ou a disponibilidade dos dados da vítima, de aplicações ou do sistema operativo, perturbando a vítima",
+      "Quando é redirecionado para websites falsos que solicitam informação pessoal",
+      "O envio aos internautas de mensagens de correio eletrónico, com a aparência de terem origem em organizações financeiras credíveis, mas com ligações para falsos sítios web que replicam os originais, e nos quais são feitos pedidos de atualização de dados privados dos clientes"
+    ],
+    "correct": "O envio aos internautas de mensagens de correio eletrónico, com a aparência de terem origem em organizações financeiras credíveis, mas com ligações para falsos sítios web que replicam os originais, e nos quais são feitos pedidos de atualização de dados privados dos clientes"
+  },
+  {
+    "id": 123,
+    "topic": "II",
+    "question": "De que tem medo quem sofre de claustrofobia?",
+    "options": ["De animais", "Da escuridão", "Da interação social", "De espaços fechados"],
+    "correct": "De espaços fechados"
+  },
+  {
+    "id": 124,
+    "topic": "II",
+    "question": "Qual das afirmações seguintes está errada?",
+    "options": [
+      "O 'Ecstasy', também conhecido por MDMA, tem como efeitos imediatos, entre outros, a diminuição do apetite e a insónia",
+      "A 'Cannabis', deriva de uma planta denominada 'Cannabis sativa', também conhecido por 'erva', 'marijuana', 'haxixe', entre outras designações, dependendo da forma de consumo tem como efeitos imediatos, entre outros, a sonolência e a fragmentação dos pensamentos",
+      "A 'Cocaína', deriva do ópio, enquanto produto natural proveniente da papoila 'Papaver omniferum', atua no sistema nervoso central causando sonolência e analgesia",
+      "A 'Heroína' tem como efeitos imediatos, no sistema nervoso central, entre outros, a analgesia e a contração da pupila"
+    ],
+    "correct": "A 'Cocaína', deriva do ópio, enquanto produto natural proveniente da papoila 'Papaver omniferum', atua no sistema nervoso central causando sonolência e analgesia"
+  },
+  {
+    "id": 125,
+    "topic": "II",
+    "question": "A cortiça é um dos produtos naturais mais característicos de Portugal. De que árvore é produzida a cortiça?",
+    "options": ["Oliveira", "Eucalipto", "Pinheiro", "Sobreiro"],
+    "correct": "Sobreiro"
+  },
+  {
+    "id": 126,
+    "topic": "II",
+    "question": "No que diz respeito aos feriados nacionais, o Dia de Portugal, Camões e das Comunidades é assinado todos os anos em:",
+    "options": ["5 de outubro", "10 de junho", "1 de novembro", "25 de abril"],
+    "correct": "10 de junho"
+  },
+  {
+    "id": 127,
+    "topic": "III",
+    "question": "Segundo a alínea a) do n.° 2 do artigo 64° da CRP, o direito à proteção da saúde é realizado:",
+    "options": [
+      "Através de um serviço nacional de saúde universal e geral e, tendo em conta as condições económicas e sociais dos cidadãos, gratuito",
+      "Através de um serviço nacional de saúde universal e geral e, tendo em conta as condições económicas e sociais dos cidadãos, tendencialmente gratuito",
+      "Através de um serviço nacional de saúde local e restrito, tendo em conta as condições económicas e sociais dos cidadãos, tendencialmente gratuito",
+      "Através de um serviço nacional de saúde local e restrito, tendo em conta as condições económicas e sociais dos cidadãos, gratuito"
+    ],
+    "correct": "Através de um serviço nacional de saúde universal e geral e, tendo em conta as condições económicas e sociais dos cidadãos, tendencialmente gratuito"
+  },
+  {
+    "id": 128,
+    "topic": "III",
+    "question": "A Constituição da República Portuguesa confere aos jovens o gozo de proteção especial para efetivação dos seus direitos económicos, sociais e culturais, nomeadamente:",
+    "options": ["No ensino, na formação profissional e na cultura", "Na educação física e no desporto", "No aproveitamento dos tempos livres", "Todas as opções estão corretas"],
+    "correct": "Todas as opções estão corretas"
+  },
+  {
+    "id": 129,
+    "topic": "III",
+    "question": "O Governo é constituído pelo:",
+    "options": [
+      "Primeiro-Ministro, pelos Ministros e pelos Secretários e Subsecretários de Estado",
+      "Primeiro-Ministro, pelos Ministros, pelos Secretários de Estado e pelos Deputados",
+      "Presidente da Assembleia da República, pelo Primeiro-Ministro, pelos Ministros e pelos Secretários de Estado",
+      "Presidente da Assembleia da República, pelo Primeiro-Ministro, pelos Ministros, pelos Secretários de Estado e pelos Deputados"
+    ],
+    "correct": "Primeiro-Ministro, pelos Ministros e pelos Secretários e Subsecretários de Estado"
+  },
+  {
+    "id": 130,
+    "topic": "III",
+    "question": "O mandato do Presidente da República tem a duração de:",
+    "options": [
+      "4 Anos e termina com a eleição do novo Presidente",
+      "4 Anos e termina com a posse do novo Presidente",
+      "5 Anos e termina com a posse do novo Presidente",
+      "5 Anos e termina com a eleição do novo Presidente"
+    ],
+    "correct": "5 Anos e termina com a posse do novo Presidente"
   }
 ]
