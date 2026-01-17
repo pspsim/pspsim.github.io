@@ -186,10 +186,67 @@ function submitTest(resultDiv, quizForm, timerDiv, submitBtn) {
     q.questionDiv.querySelectorAll("input[type=radio]").forEach(radio => radio.disabled = true);
   });
 
-  const finalScore = (scoreCount / testQuestions.length) * 20;
-  resultDiv.innerHTML = `Acertaste ${scoreCount}/${testQuestions.length} perguntas.<br>
-    Nota final: <span style="font-size:2em"><strong>${finalScore.toFixed(2)}/20</strong></span>`;
+  function submitTest(resultDiv, quizForm, timerDiv, submitBtn) {
+  clearInterval(timerInterval);
+  let scoreCount = 0;
 
+  testQuestions.forEach(q => {
+    q.questionDiv.querySelectorAll(".feedback").forEach(f => f.remove());
+    q.questionDiv.style.border = "2px solid #ccc";
+
+    const feedback = document.createElement("div");
+    feedback.className = "feedback";
+    feedback.style.marginTop = "8px";
+    feedback.style.fontWeight = "bold";
+
+    const selected = document.querySelector(`input[name="${q.inputName}"]:checked`);
+
+    if (selected) {
+      const userIndex = parseInt(selected.value);
+      const userAnswerText = q.optionsRendered[userIndex];
+
+      if (userAnswerText === q.correct) {
+        scoreCount++;
+        q.questionDiv.style.border = "2px solid green";
+        feedback.style.color = "green";
+        feedback.textContent = "✅ Resposta correta";
+      } else {
+        const correctIndex = q.optionsRendered.findIndex(opt => opt === q.correct);
+        q.questionDiv.style.border = "2px solid red";
+        feedback.style.color = "red";
+        feedback.innerHTML = `❌ Resposta errada<br>
+          A tua resposta: ${String.fromCharCode(65 + userIndex)}) ${userAnswerText}<br>
+          Resposta correta: ${String.fromCharCode(65 + correctIndex)}) ${q.correct}`;
+      }
+    } else {
+      const correctIndex = q.optionsRendered.findIndex(opt => opt === q.correct);
+      q.questionDiv.style.border = "2px solid orange";
+      feedback.style.color = "orange";
+      feedback.innerHTML = `⚠️ Pergunta não respondida<br>
+        Resposta correta: ${String.fromCharCode(65 + correctIndex)}) ${q.correct}`;
+    }
+
+    q.questionDiv.appendChild(feedback);
+    q.questionDiv.querySelectorAll("input[type=radio]").forEach(radio => radio.disabled = true);
+  });
+
+  const finalScore = (scoreCount / testQuestions.length) * 20;
+
+  // Criar div do resultado **antes do quiz**
+  let resultadoTopo = document.getElementById("resultadoTopo");
+  if (!resultadoTopo) {
+    resultadoTopo = document.createElement("div");
+    resultadoTopo.id = "resultadoTopo";
+    resultadoTopo.style.fontSize = "24px";
+    resultadoTopo.style.fontWeight = "bold";
+    resultadoTopo.style.textAlign = "center";
+    resultadoTopo.style.marginBottom = "20px";
+    quizForm.parentNode.insertBefore(resultadoTopo, quizForm);
+  }
+  resultadoTopo.innerHTML = `Nota final: <strong>${finalScore.toFixed(2)}/20</strong>`;
+
+  // Mantém o resultado detalhado abaixo das perguntas
+  resultDiv.innerHTML = `Acertaste ${scoreCount}/${testQuestions.length} perguntas.`;
   const aptoDiv = document.createElement("div");
   aptoDiv.id = "aptoDiv";
   aptoDiv.style.textAlign = "center";
@@ -199,10 +256,12 @@ function submitTest(resultDiv, quizForm, timerDiv, submitBtn) {
   aptoDiv.textContent = finalScore >= 12 ? "APTO" : "NÃO APTO";
   resultDiv.appendChild(aptoDiv);
 
+  // Scroll suave para topo
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
   testSubmitted = true;
   submitBtn.textContent = "Novo Teste";
 }
-
 // ===================== RESET =====================
 function resetTest(resultDiv, quizForm, timerDiv, submitBtn, topics, topicNames) {
   resultDiv.textContent = "";
