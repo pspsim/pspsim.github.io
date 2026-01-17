@@ -1110,5 +1110,126 @@
       "A esquadra e o posto"
     ],
     "correct": "A divisão policial e a esquadra"
+  },
+  [
+  {
+    "id": 141,
+    "topic": "V",
+    "question": "A Unidade Especial de Polícia (UEP) compreende as seguintes subunidades operacionais:",
+    "options": [
+      "A Equipa de Intervenção Rápida, o Grupo de Operações Especiais, o Corpo de Segurança Pessoal, o Centro de Inativação de Explosivos e Segurança em Subsolo e o Grupo Operacional Cinotecnico",
+      "O Corpo de Intervenção, o Grupo de Operações Especiais, o Corpo de Segurança Pessoal, o Centro de Inativação de Explosivos e Segurança em Subsolo e o Grupo Operacional Cinotécnico",
+      "O Corpo de Intervenção, o Grupo de Operações Especiais, a Segurança Privada, o Centro de Inativação de Explosivos e Segurança em Subsolo e o Grupo Operacional Cinotécnico",
+      "O Corpo de Intervenção, o Grupo de Operações Especiais, o Corpo de Segurança Privada, o Centro de Minas e Armadilhas e o Grupo Operacional Cinotecnico"
+    ],
+    "correct": "O Corpo de Intervenção, o Grupo de Operações Especiais, o Corpo de Segurança Pessoal, o Centro de Inativação de Explosivos e Segurança em Subsolo e o Grupo Operacional Cinotécnico"
+  },
+  {
+    "id": 142,
+    "topic": "VI",
+    "question": "O artigo 7.° do Estatuto da PSP (Decreto-Lei n.° 243/2015, de 19 de outubro) prevê que os polícias estão sujeitos a um regime de continências e honras policiais próprio aprovado por portaria do ministro da tutela. É também definido neste artigo que as normas relativas a ordem unida, apresentação e aprumo são aprovadas por despacho….",
+    "options": [
+      "do ministro da defesa",
+      "do ministro da administração interna",
+      "do diretor nacional",
+      "dos diretores nacionais-adjuntos"
+    ],
+    "correct": "do diretor nacional"
+  },
+  {
+    "id": 143,
+    "topic": "VI",
+    "question": "O Artigo 10.° do Estatuto da PSP (Decreto-Lei n.° 243/2015, de 19 de outubro) estabelece deveres profissionais que norteiam a ação do pessoal com funções policiais da PSP, prevendo que...",
+    "options": [
+      "os polícias não podem fazer declarações que afetem a subordinação da PSP à legalidade democrática, a dependência da instituição perante os órgãos do Governo, a sua isenção política e partidária, a coesão e o prestígio da instituição, ou que violem os princípios da hierarquia de comando e da disciplina, não sendo extensivo a declarações ou comentários públicos sobre matérias ou procedimentos operacionais da PSP",
+      "os polícias não podem fazer declarações que afetem a subordinação da PSP à legalidade democrática, a dependência da instituição perante os órgãos do Governo, a sua isenção política e partidária, a coesão e o prestígio da instituição, ou que violem os princípios da hierarquia de comando e da disciplina, sendo extensivo a declarações ou comentários públicos sobre matérias ou procedimentos operacionais da PSP",
+      "os polícias podem fazer declarações que afetem a subordinação da PSP à legalidade democrática, a dependência da instituição perante os órgãos do Governo, a sua isenção política e partidária, a coesão e o prestígio da instituição, ou que violem os principios da hierarquia de comando e da disciplina, não sendo extensivo a declarações ou comentários públicos sobre matérias ou procedimentos operacionais da PSP",
+      "os polícias podem fazer declarações que afetem a subordinação da PSP à legalidade democrática, a dependência da instituição perante os órgãos do Governo, a sua isenção política e partidária, a coesão e o prestigio da instituição, ou que violem os princípios da hierarquia de comando e da disciplina, sendo extensivo a declarações ou comentários públicos sobre matérias ou procedimentos operacionais da PSP"
+    ],
+    "correct": "os polícias não podem fazer declarações que afetem a subordinação da PSP à legalidade democrática, a dependência da instituição perante os órgãos do Governo, a sua isenção política e partidária, a coesão e o prestígio da instituição, ou que violem os princípios da hierarquia de comando e da disciplina, sendo extensivo a declarações ou comentários públicos sobre matérias ou procedimentos operacionais da PSP"
+  },
+  {
+    "id": 144,
+    "topic": "VI",
+    "question": "Em conformidade com o Estatuto da PSP em vigência, recai sobre o pessoal com funções policais da PSP o dever de disponibilidade, o que implica…",
+    "options": [
+      "os polícias devem manter permanentemente disponibilidade para o serviço, ainda que com sacrifício dos interesses pessoais",
+      "os polícias devem manter permanentemente disponibilidade para o serviço, desde que não implique sacrifício dos interesses pessoais",
+      "os polícias devem cumprir unicamente o horário de serviço para o qual se encontram devidamente escalados",
+      "Todas as opções estão incorretas"
+    ],
+    "correct": "os polícias devem manter permanentemente disponibilidade para o serviço, ainda que com sacrifício dos interesses pessoais"
+  },
+  {
+    "id": 145,
+    "topic": "VI",
+    "question": "Atualmente a carreira de agente de polícia da PSP compreende as categorias:",
+    "options": [
+      "De agente principal e de agente",
+      "De agente principal, de agente e de guarda",
+      "De agente coordenador, de agente principal e de agente",
+      "De agente ajudante e de agente"
+    ],
+    "correct": "De agente coordenador, de agente principal e de agente"
+  },
+  {
+    "id": 146,
+    "topic": "VI",
+    "question": "Em termos de formação policial, os elementos com funções policiais são obrigados a frequentar, anualmente, no minimo...",
+    "options": [
+      "1 hora de formação policial ou de outras formações não reconhecidas como de interesse para as outras competências da PSP",
+      "15 horas de formação policial ou de outras formações reconhecidas como de interesse para as outras competências da PSP",
+      "90 horas de formação policial ou de outras formações reconhecidas como de interesse para as outras competências da PSP",
+      "Todas as opções estão incorretas"
+    ],
+    "correct": "15 horas de formação policial ou de outras formações reconhecidas como de interesse para as outras competências da PSP"
+  },
+  {
+    "id": 147,
+    "topic": "VI",
+    "question": "O Estatuto da PSP em vigor estabelece os limites máximos de idade para passagem à situação de pre-aposentaçao para os elementos com funções policiais, encontrando-se assim definidos...",
+    "options": [
+      "55 anos para todas as carreiras",
+      "62 anos para a categoria de superintendente-chefe e 60 anos para as restantes categorias e carreiras",
+      "65 anos para todas as carreiras",
+      "70 anos para todas as carreiras"
+    ],
+    "correct": "62 anos para a categoria de superintendente-chefe e 60 anos para as restantes categorias e carreiras"
+  },
+  {
+    "id": 148,
+    "topic": "VII",
+    "question": "No Parlamento Europeu, o número de deputados por país é, aproximadamente, proporcional...",
+    "options": [
+      "à área geográfica de cada país",
+      "ao PIB (produto interno bruto) de cada país",
+      "à população de cada país",
+      "à antiguidade de cada pais na União Europeia"
+    ],
+    "correct": "à população de cada país"
+  },
+  {
+    "id": 149,
+    "topic": "VII",
+    "question": "Dos países assinalados qual faz parte da União Europeia?",
+    "options": [
+      "Suíça",
+      "Malta",
+      "Reino Unido",
+      "Turquia"
+    ],
+    "correct": "Malta"
+  },
+  {
+    "id": 150,
+    "topic": "VII",
+    "question": "Os seis (6) países fundadores da atual União Europeia são...",
+    "options": [
+      "Alemanha, Bélgica, França, Itália, Luxemburgo e Países Baixos",
+      "Alemanha, Bélgica, França, Luxemburgo, Países Baixos e Espanha",
+      "Alemanha, Bélgica, Luxemburgo, Países Baixos, Espanha e Portugal",
+      "Alemanha, Bélgica, Luxemburgo, Países Baixos, Itália e Suíça"
+    ],
+    "correct": "Alemanha, Bélgica, França, Itália, Luxemburgo e Países Baixos"
   }
 ]
